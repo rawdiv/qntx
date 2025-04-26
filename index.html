@@ -17,9 +17,9 @@
     .navbar {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 2rem 0 1.5rem 0;
+      padding: 1.5rem 2rem;
       background: none;
       position: relative;
       z-index: 10;
@@ -345,6 +345,9 @@
     }
     /* --- Mobile styles only below --- */
     @media (max-width: 900px) {
+      .navbar {
+        padding: 1rem 1rem;
+      }
       .navbar-menu {
         display: none;
         position: fixed;
@@ -364,32 +367,76 @@
       }
       .navbar-hamburger {
         display: block;
+        position: absolute;
+        right: 1rem;
       }
       .main-hero, .about-section, .section {
-        padding: 2.5rem 0.5rem 0 0.5rem;
+        padding: 2rem 1rem 0 1rem;
       }
       .main-hero {
         flex-direction: column !important;
-        align-items: flex-start !important;
+        align-items: center !important;
         gap: 2.5rem !important;
       }
-      .about-cols, .feature-grid, .stats-grid, .timeline {
+      .hero-right {
+        display: none;
+      }
+      .about-cols {
         flex-direction: column !important;
         gap: 1.5rem !important;
       }
+      .feature-grid, .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem !important;
+      }
+      .timeline {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        align-items: center;
+      }
+      .feature-card, .stat-card, .event {
+        width: 100%;
+        max-width: none;
+      }
       .footer-links {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
       }
     }
     @media (max-width: 600px) {
-      .main-hero { padding: 2rem 0.5rem 1rem 0.5rem; }
-      .about-section { padding: 1.5rem 0.5rem 0 0.5rem; }
-      .hero-title { font-size: 2.1rem; }
-      .hero-graphic img { width: 180px !important; }
-      .section-title { font-size: 1.5rem; }
-      .feature-card, .stat-card, .event, .about-col { min-width: 0; max-width: 100%; padding: 1.2rem 0.7rem; }
-      .site-footer { padding: 1.5rem 0.5rem 1rem 0.5rem; }
+      .main-hero { 
+        padding: 1rem 1rem;
+        text-align: center; 
+      }
+      .hero-left {
+        align-items: center;
+      }
+      .about-section { 
+        padding: 1.5rem 1rem 0 1rem; 
+        text-align: center;
+      }
+      .hero-title { 
+        font-size: 2.1rem; 
+        text-align: center;
+      }
+      .hero-sub, .hero-desc {
+        text-align: center;
+      }
+      .section-title { 
+        font-size: 1.5rem; 
+      }
+      .feature-card, .stat-card, .event, .about-col { 
+        min-width: 0; 
+        width: 100%;
+        max-width: 100%; 
+        padding: 1.2rem 1rem; 
+        margin: 0;
+      }
+      .site-footer { 
+        padding: 1.5rem 0.5rem 1rem 0.5rem; 
+      }
     }
   </style>
 </head>

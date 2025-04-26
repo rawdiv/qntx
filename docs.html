@@ -17,9 +17,9 @@
     .navbar {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 2rem 0 1.5rem 0;
+      padding: 1.5rem 2rem;
       background: none;
       position: relative;
       z-index: 10;
@@ -66,6 +66,9 @@
       z-index: 20;
     }
     @media (max-width: 900px) {
+      .navbar {
+        padding: 1rem 1rem;
+      }
       .navbar-menu {
         display: none;
         position: fixed;
@@ -85,6 +88,11 @@
       }
       .navbar-hamburger {
         display: block;
+        position: absolute;
+        right: 1rem;
+      }
+      .main-content {
+        padding: 2rem 1rem;
       }
     }
     .main-content {
@@ -255,10 +263,34 @@
       opacity: 0.8;
     }
     @media (max-width: 600px) {
-      .main-content { padding: 1.5rem 0.5rem 0 0.5rem; }
-      .section-title { font-size: 1.5rem; }
-      .docs-card { padding: 1.2rem 0.7rem; }
-      .site-footer { padding: 1.5rem 0.5rem 1rem 0.5rem; }
+      .main-content { 
+        padding: 1.5rem 1rem; 
+      }
+      .section-title { 
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem; 
+      }
+      .docs-card { 
+        padding: 1.2rem 1rem;
+        margin-bottom: 1.5rem; 
+      }
+      .abstract {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .site-footer { 
+        padding: 1.5rem 0.5rem 1rem 0.5rem; 
+      }
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      table {
+        display: block;
+        overflow-x: auto;
+      }
     }
   </style>
 </head>

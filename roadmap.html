@@ -17,9 +17,9 @@
     .navbar {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 2rem 0 1.5rem 0;
+      padding: 1.5rem 2rem;
       background: none;
       position: relative;
       z-index: 10;
@@ -66,6 +66,9 @@
       z-index: 20;
     }
     @media (max-width: 900px) {
+      .navbar {
+        padding: 1rem 1rem;
+      }
       .navbar-menu {
         display: none;
         position: fixed;
@@ -85,6 +88,8 @@
       }
       .navbar-hamburger {
         display: block;
+        position: absolute;
+        right: 1rem;
       }
     }
     .main-content {
@@ -230,31 +235,49 @@
     }
     @media (max-width: 768px) {
       .roadmap-container::before {
-        left: 30px;
+        left: 20px;
       }
       .roadmap-item, .roadmap-item:nth-child(even) {
         justify-content: flex-start;
-        padding-left: 60px;
+        padding-left: 50px;
+        width: 100%;
       }
       .roadmap-milestone {
         width: 100%;
+        max-width: none;
       }
       .roadmap-point {
-        left: 30px;
+        left: 20px;
+      }
+      .main-content {
+        padding: 2rem 1rem;
       }
     }
     @media (max-width: 600px) {
       .main-content {
-        padding: 2rem 1rem 0 1rem;
+        padding: 1.5rem 1rem;
       }
       .section-title {
         font-size: 1.8rem;
+        margin-bottom: 1.5rem;
       }
       .roadmap-milestone {
-        padding: 1.5rem;
+        padding: 1.2rem 1rem;
+      }
+      .roadmap-date {
+        font-size: 1.2rem;
+      }
+      .roadmap-title {
+        font-size: 1.3rem;
       }
       .site-footer {
         padding: 1.5rem 0.5rem 1rem 0.5rem;
+      }
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
       }
     }
   </style>
