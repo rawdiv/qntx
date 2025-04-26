@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quant (QNTX) - Tokenomics</title>
+  <link href="https://fonts.cdnfonts.com/css/avenir-next-lt-pro" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: #000; 
+      color: #fff; 
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 500;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Avenir Next", "Avenir Next LT Pro", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 { 
+      font-size: 4rem; 
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+    }
+    
+    h2 { 
+      font-size: 2.5rem; 
+      line-height: 1.2;
+      margin: 3rem 0 1.5rem;
+      color: #fff;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    
+    h3 { 
+      font-size: 1.75rem; 
+      line-height: 1.3;
+      margin: 2rem 0 1rem;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    p { 
+      margin-bottom: 1.5rem;
+      color: #94a3b8;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section {
+      margin: 4rem 0;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+    }
+
+    .table th,
+    .table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .table th {
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+    }
+
+    .table td {
+      color: #94a3b8;
+    }
+
+    .table tr:last-child td {
+      border-bottom: none;
+    }
+
+    ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #94a3b8;
+    }
+
+    li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #6366f1;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      font-family: "Avenir Next", "Avenir Next LT Pro", sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .navbar-link {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-link:hover {
+      color: #fff;
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .navbar-menu.active {
+        display: flex;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-link {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Adjust main content to account for fixed navbar */
+    body {
+      padding-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+      
+      h1 { font-size: 3rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.5rem; }
+      
+      .table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">QNTX</a>
+      <button class="navbar-toggle" id="navbarToggle">☰</button>
+      <div class="navbar-menu" id="navbarMenu">
+        <a href="index.html" class="navbar-link">Home</a>
+        <a href="index.html#about" class="navbar-link">About</a>
+        <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
+        <a href="docs.html" class="navbar-link">Whitepaper</a>
+        <a href="roadmap.html" class="navbar-link">Roadmap</a>
+        <a href="security.html" class="navbar-link">Security</a>
+        <a href="legal.html" class="navbar-link">Legal</a>
+        <a href="index.html#community" class="navbar-link">Community</a>
+        <a href="index.html#contact" class="navbar-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Tokenomics: The Heart of Quant (QNTX)</h1>
+    
+    <div class="section">
+      <p>At the core of any cryptocurrency project lies its tokenomics—how tokens are distributed, utilized, and managed. For Quant (QNTX), we've designed our tokenomics to ensure <strong>long-term sustainability</strong>, <strong>growth</strong>, and <strong>community engagement</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>1. Overview of Quant (QNTX)</h2>
+      <p>Quant (QNTX) is a <strong>deflationary cryptocurrency</strong> designed to power decentralized finance (DeFi) solutions, governance systems, and reward mechanisms.</p>
+      <ul>
+        <li><strong>Token Name</strong>: Quant</li>
+        <li><strong>Ticker Symbol</strong>: QNTX</li>
+        <li><strong>Blockchain</strong>: Binance Smart Chain (BSC)</li>
+        <li><strong>Total Supply</strong>: 50,00,000 (5 Million QNTX)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>2. Token Distribution</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Percentage</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Public Sale</td>
+            <td>40%</td>
+            <td>2,000,000 QNTX</td>
+          </tr>
+          <tr>
+            <td>Team & Advisors</td>
+            <td>15%</td>
+            <td>750,000 QNTX</td>
+          </tr>
+          <tr>
+            <td>Staking & Liquidity Rewards</td>
+            <td>20%</td>
+            <td>1,000,000 QNTX</td>
+          </tr>
+          <tr>
+            <td>Ecosystem Development</td>
+            <td>10%</td>
+            <td>500,000 QNTX</td>
+          </tr>
+          <tr>
+            <td>Partnerships & Collaborations</td>
+            <td>10%</td>
+            <td>500,000 QNTX</td>
+          </tr>
+          <tr>
+            <td>Reserve Fund</td>
+            <td>5%</td>
+            <td>250,000 QNTX</td>
+          </tr>
+          <tr>
+            <td>Burn Pool</td>
+            <td>5%</td>
+            <td>250,000 QNTX</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>3. Token Utility</h2>
+      <h3>a. Staking Rewards</h3>
+      <p>Stake QNTX to earn passive rewards. By participating in staking pools, holders can receive a portion of transaction fees and other rewards generated by the Quant ecosystem.</p>
+
+      <h3>b. Governance</h3>
+      <p>QNTX token holders will have the ability to participate in decision-making for the project. This includes voting on major protocol upgrades, future developments, and changes to tokenomics.</p>
+
+      <h3>c. Transaction Fees</h3>
+      <p>QNTX tokens will be used to pay transaction fees on the network. This includes fees for sending tokens, interacting with smart contracts, and using decentralized applications (dApps).</p>
+
+      <h3>d. Liquidity Provision</h3>
+      <p>QNTX holders can provide liquidity to decentralized exchanges (DEXes) like PancakeSwap and earn fees.</p>
+    </div>
+
+    <div class="section">
+      <h2>4. Deflationary Mechanism</h2>
+      <p>Quant (QNTX) is a deflationary token, meaning that the total supply will decrease over time through:</p>
+      <ul>
+        <li>Burning: A portion of tokens burned with every transaction</li>
+        <li>Scheduled Burn Events: Periodic burn events to maintain limited supply</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>5. Token Release Schedule</h2>
+      <ul>
+        <li>Team & Advisors: Locked for 1 year, then vested over 3 years</li>
+        <li>Public Sale: Available immediately post-sale</li>
+        <li>Staking Rewards: Distribution starts in Q2 2025</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>6. Long-Term Vision</h2>
+      <ul>
+        <li>Cross-chain integrations</li>
+        <li>Decentralized applications (dApps)</li>
+        <li>Partnerships with leading platforms</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. Transparency and Reporting</h2>
+      <p>We are committed to transparency with our community. Regular updates on token supply, burn events, staking rewards, and team vesting will be shared on our platform.</p>
+    </div>
+
+    <div class="section">
+      <h2>Conclusion</h2>
+      <p>Quant (QNTX) is designed with sustainability, growth, and community involvement at its core. Through a balanced tokenomics model, we aim to ensure the token's value increases over time while rewarding users for their participation in the ecosystem.</p>
+    </div>
+  </div>
+
+  <script>
+    // Navbar Toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+        navbarMenu.classList.remove('active');
+      }
+    });
+
+    // Close menu when clicking a link
+    const navbarLinks = document.querySelectorAll('.navbar-link');
+    navbarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html> 

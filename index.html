@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quant (QNTX) - Empowering the Future of Digital Finance</title>
+  <link href="https://fonts.cdnfonts.com/css/avenir-next-lt-pro" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: #000; 
+      color: #fff; 
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 25%);
+      font-weight: 500;
+      padding-top: 80px;
+    }
+    
+    a { 
+      color: #6366f1; 
+      text-decoration: none; 
+      transition: 0.3s; 
+    }
+    a:hover { 
+      color: #818cf8; 
+    }
+
+    .container { 
+      width: 90%; 
+      max-width: 1200px; 
+      margin: auto; 
+      padding: 2rem 0; 
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Avenir Next", "Avenir Next LT Pro", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 { 
+      font-size: 4rem; 
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+    }
+    
+    h2 { 
+      font-size: 2.5rem; 
+      line-height: 1.2;
+      margin: 3rem 0 1.5rem;
+      color: #fff;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    
+    h3 { 
+      font-size: 1.75rem; 
+      line-height: 1.3;
+      margin: 2rem 0 1rem;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h4 {
+      font-size: 1.75rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    p { 
+      margin-bottom: 1.5rem;
+      color: #94a3b8;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    ul { 
+      list-style: none; 
+      margin-bottom: 1.5rem; 
+    }
+    
+    li { 
+      position: relative; 
+      padding-left: 1.5rem; 
+      margin-bottom: 0.75rem;
+      color: #94a3b8;
+    }
+    
+    li::before { 
+      content: '→'; 
+      position: absolute; 
+      left: 0; 
+      color: #6366f1; 
+    }
+
+    .btn { 
+      display: inline-block; 
+      padding: 1.25rem 2.5rem;
+      background: #6366f1;
+      color: #fff; 
+      border-radius: 8px; 
+      font-weight: 600;
+      font-size: 1.125rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 0.5rem;
+      border: none;
+    }
+    
+    .btn:hover { 
+      background: #818cf8; 
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    section { 
+      padding: 6rem 0; 
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1); 
+    }
+    
+    #hero { 
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .hero-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+      height: 1px;
+      width: 100%;
+      opacity: 0.5;
+    }
+
+    .hero-line:nth-child(1) {
+      top: 20%;
+      transform: rotate(-5deg);
+    }
+
+    .hero-line:nth-child(2) {
+      top: 40%;
+      transform: rotate(5deg);
+    }
+
+    .hero-line:nth-child(3) {
+      top: 60%;
+      transform: rotate(-3deg);
+    }
+
+    .hero-line:nth-child(4) {
+      top: 80%;
+      transform: rotate(3deg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 1;
+    }
+
+    .hero-glow:nth-child(1) {
+      top: -150px;
+      left: -150px;
+    }
+
+    .hero-glow:nth-child(2) {
+      bottom: -150px;
+      right: -150px;
+    }
+
+    .grid-2 { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 3rem; 
+    }
+
+    /* Roadmap Timeline */
+    .timeline { 
+      position: relative; 
+      margin-top: 3rem; 
+    }
+    
+    .timeline::before { 
+      content: ''; 
+      position: absolute; 
+      left: 20px; 
+      top: 0; 
+      bottom: 0; 
+      width: 2px; 
+      background: #6366f1; 
+    }
+    
+    .event { 
+      position: relative; 
+      padding-left: 3rem; 
+      margin-bottom: 3rem; 
+    }
+    
+    .event::before { 
+      content: ''; 
+      position: absolute; 
+      left: 12px; 
+      top: 0; 
+      width: 16px; 
+      height: 16px; 
+      background: #000; 
+      border: 2px solid #6366f1; 
+      border-radius: 50%; 
+    }
+
+    /* Team Section */
+    .team-grid { 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; 
+      justify-content: center; 
+    }
+    
+    .member { 
+      background: rgba(99, 102, 241, 0.05); 
+      border: 1px solid rgba(99, 102, 241, 0.1); 
+      padding: 2rem; 
+      text-align: center; 
+      border-radius: 12px; 
+      transition: transform 0.3s ease;
+    }
+    
+    .member:hover {
+      transform: translateY(-5px);
+    }
+    
+    .member h4 { 
+      margin-bottom: 0.5rem; 
+      color: #fff; 
+    }
+    
+    .member p { 
+      font-size: 0.95rem;
+      color: #94a3b8;
+    }
+
+    footer { 
+      background: rgba(99, 102, 241, 0.05); 
+      padding: 3rem 0; 
+      text-align: center; 
+      font-size: 0.9rem; 
+    }
+    
+    footer a { 
+      margin: 0 0.5rem; 
+      color: #6366f1; 
+    }
+
+    /* Additional Solana-like elements */
+    .gradient-text {
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 { font-size: 3.5rem; }
+      h2 { font-size: 3rem; }
+      h3 { font-size: 2rem; }
+      h4 { font-size: 1.5rem; }
+      p { font-size: 1.125rem; }
+      .container { width: 95%; }
+      .hero-line {
+        opacity: 0.3;
+      }
+      .hero-glow {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    /* New Card Styles */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .feature-card {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .feature-card p {
+      color: #94a3b8;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(99, 102, 241, 0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .stat-card h3 {
+      font-family: "Avenir Next", "Avenir Next LT Pro", sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card p {
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+      align-items: center;
+    }
+
+    .partner-logo {
+      filter: grayscale(100%) brightness(200%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      filter: grayscale(0%) brightness(100%);
+      opacity: 1;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .news-card {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 1.5rem;
+    }
+
+    .news-content h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .news-content p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .news-content a {
+      color: #6366f1;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .section-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #6366f1;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      font-family: "Avenir Next", "Avenir Next LT Pro", sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .navbar-link {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-link:hover {
+      color: #fff;
+    }
+
+    .navbar-button {
+      background: #6366f1;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .navbar-button:hover {
+      background: #818cf8;
+      transform: translateY(-2px);
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .navbar-menu.active {
+        display: flex;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-link {
+        font-size: 1.1rem;
+      }
+
+      .navbar-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Mobile Responsiveness Improvements */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+        width: 100%;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+
+      .feature-card img {
+        height: 180px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .stat-card {
+        padding: 1.5rem;
+      }
+
+      .stat-card h3 {
+        font-size: 2.5rem;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .news-card {
+        margin-bottom: 1.5rem;
+      }
+
+      .news-card img {
+        height: 180px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .member {
+        padding: 1.5rem;
+      }
+
+      .roadmap-item {
+        padding: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .timeline {
+        margin-left: 1rem;
+      }
+
+      .event {
+        padding-left: 2rem;
+      }
+
+      .event::before {
+        left: 8px;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+        background: rgba(99, 102, 241, 0.05);
+        border-radius: 8px;
+      }
+
+      /* Adjust section spacing for mobile */
+      section {
+        padding: 3rem 0;
+      }
+
+      /* Adjust heading sizes for better mobile readability */
+      h1 { 
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+      
+      h2 { 
+        font-size: 2rem;
+        line-height: 1.3;
+      }
+      
+      h3 { 
+        font-size: 1.5rem;
+        line-height: 1.4;
+      }
+
+      /* Improve table responsiveness */
+      .table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .table th,
+      .table td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Additional breakpoint for very small devices */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0.75rem;
+      }
+
+      h1 { 
+        font-size: 2rem;
+      }
+      
+      h2 { 
+        font-size: 1.75rem;
+      }
+      
+      h3 { 
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .feature-card,
+      .stat-card,
+      .news-card,
+      .member,
+      .roadmap-item {
+        padding: 1rem;
+      }
+
+      .feature-card img,
+      .news-card img {
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="navbar-logo">QNTX</a>
+      <button class="navbar-toggle" id="navbarToggle">☰</button>
+      <div class="navbar-menu" id="navbarMenu">
+        <a href="index.html" class="navbar-link">Home</a>
+        <a href="index.html#about" class="navbar-link">About</a>
+        <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
+        <a href="docs.html" class="navbar-link">Whitepaper</a>
+        <a href="roadmap.html" class="navbar-link">Roadmap</a>
+        <a href="security.html" class="navbar-link">Security</a>
+        <a href="legal.html" class="navbar-link">Legal</a>
+        <a href="index.html#community" class="navbar-link">Community</a>
+        <a href="index.html#contact" class="navbar-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-lines">
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+    </div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <h1>Quant (QNTX) - Empowering the Future of Digital Finance</h1>
+      <p>Welcome to Quant (QNTX), a revolutionary digital token built for fast, secure, and low-cost transactions. Quant unlocks the full potential of decentralized finance (DeFi).</p>
+      <div>
+        <a href="#" class="btn">Buy QNTX</a>
+        <a href="#" class="btn">Join the Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>What is Quant (QNTX)?</h2>
+      <p>Quant (QNTX) is a next-generation digital asset built on the Binance Smart Chain (BSC) to provide an easy, scalable, and efficient way for users to interact with the decentralized finance ecosystem.</p>
+      <h3>Core Features</h3>
+      <ul>
+        <li>Low Fees: Near-zero transaction fees ideal for micro-transactions and global payments.</li>
+        <li>Fast Transactions: Instant confirmations and real-time settlements.</li>
+        <li>Secure: Built on Binance Smart Chain for top-tier security and transparency.</li>
+        <li>Scalable: Infrastructure ensures performance even as demand grows.</li>
+      </ul>
+      <h3>Tokenomics</h3>
+      <ul>
+        <li>Total Supply: 1,000,000,000 QNTX tokens</li>
+        <li>Allocation: 50% Public Sale | 20% Staking & Rewards | 15% Team & Advisors | 10% Liquidity | 5% Marketing & Partnerships</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="grid-2">
+        <div>
+          <h3>How to Buy QNTX</h3>
+          <p>Connect your MetaMask wallet, visit PancakeSwap, and swap BNB or USDT for QNTX.</p>
+        </div>
+        <div>
+          <h3>Staking QNTX</h3>
+          <p>Stake Quant tokens to secure the network and earn passive rewards.</p>
+        </div>
+      </div>
+      <ol>
+        <li>Connect your wallet.</li>
+        <li>Swap tokens for QNTX on PancakeSwap.</li>
+        <li>Stake tokens to earn rewards.</li>
+        <li>Enjoy low-fee, fast transactions.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section id="roadmap">
+    <div class="container">
+      <h2>Roadmap</h2>
+      <p>Our Vision for the Future of Quant (QNTX)</p>
+      <div class="timeline">
+        <div class="event">
+          <h4>Q2 2025</h4>
+          <ul>
+            <li>Token listed on PancakeSwap and other decentralized exchanges</li>
+            <li>Launch of staking program for early adopters</li>
+          </ul>
+        </div>
+        <div class="event">
+          <h4>Q3 2025</h4>
+          <ul>
+            <li>Community governance features</li>
+            <li>Integration with other DeFi protocols</li>
+          </ul>
+        </div>
+        <div class="event">
+          <h4>Q4 2025</h4>
+          <ul>
+            <li>Expanding to Ethereum & Solana</li>
+            <li>Decentralized exchange with QNTX trading pairs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team">
+    <div class="container">
+      <h2>Meet the Team</h2>
+      <div class="team-grid">
+        <div class="member">
+          <h4>John Doe</h4>
+          <p>Founder & CEO - 10+ years in blockchain technology</p>
+        </div>
+        <div class="member">
+          <h4>Jane Smith</h4>
+          <p>Lead Developer - Oversees smart contract security & efficiency</p>
+        </div>
+        <div class="member">
+          <h4>Advisors</h4>
+          <p>Industry experts in blockchain, finance, and technology</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Token Distribution Section -->
+  <section id="distribution">
+    <div class="container">
+      <h2>Token Distribution</h2>
+      <ul>
+        <li>50% Public Sale</li>
+        <li>20% Staking & Rewards</li>
+        <li>15% Team & Advisors</li>
+        <li>10% Liquidity Pools</li>
+        <li>5% Marketing & Partnerships</li>
+      </ul>
+      <p>Transparent and fair distribution to ensure long-term sustainability.</p>
+    </div>
+  </section>
+
+  <!-- Security & Audits Section -->
+  <section id="security">
+    <div class="container">
+      <h2>Security & Audits</h2>
+      <p>Smart contracts regularly audited by Certik and Hacken to meet top security standards.</p>
+      <ul>
+        <li>Anti-Whale Mechanisms</li>
+        <li>Transaction Limits</li>
+        <li>Liquidity Locking</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section id="cta">
+    <div class="container" style="text-align: center;">
+      <h2>Get Started with Quant (QNTX) Today!</h2>
+      <a href="#" class="btn">Buy QNTX Now</a>
+      <a href="#" class="btn">Join the Community</a>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section id="social">
+    <div class="container">
+      <h2>Join a Growing Community</h2>
+      <p>10,000+ members in our Telegram group.</p>
+      <p>Follow us: <a href="#">Twitter</a> | <a href="#">Telegram</a> | <a href="#">Discord</a></p>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>1B+</h3>
+          <p>Total Transactions</p>
+        </div>
+        <div class="stat-card">
+          <h3>50K+</h3>
+          <p>Active Users</p>
+        </div>
+        <div class="stat-card">
+          <h3>$0.0025</h3>
+          <p>Avg. Transaction Fee</p>
+        </div>
+        <div class="stat-card">
+          <h3>400ms</h3>
+          <p>Block Time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <h2>Built for the Future</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <img src="https://via.placeholder.com/400x200" alt="Fast Transactions">
+          <h3>Lightning Fast</h3>
+          <p>Experience near-instant transactions with our optimized blockchain technology.</p>
+        </div>
+        <div class="feature-card">
+          <img src="https://via.placeholder.com/400x200" alt="Low Fees">
+          <h3>Minimal Fees</h3>
+          <p>Pay less than $0.0025 per transaction, making micro-transactions viable.</p>
+        </div>
+        <div class="feature-card">
+          <img src="https://via.placeholder.com/400x200" alt="Scalable">
+          <h3>Massively Scalable</h3>
+          <p>Handle thousands of transactions per second without compromising performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section id="partners">
+    <div class="container">
+      <h2>Trusted by Industry Leaders</h2>
+      <div class="partners-grid">
+        <img src="https://via.placeholder.com/150x50" alt="Partner 1" class="partner-logo">
+        <img src="https://via.placeholder.com/150x50" alt="Partner 2" class="partner-logo">
+        <img src="https://via.placeholder.com/150x50" alt="Partner 3" class="partner-logo">
+        <img src="https://via.placeholder.com/150x50" alt="Partner 4" class="partner-logo">
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section id="news">
+    <div class="container">
+      <h2>Latest Updates</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <img src="https://via.placeholder.com/400x200" alt="News 1">
+          <div class="news-content">
+            <h3>QNTX Token Launch</h3>
+            <p>Quant (QNTX) token is now live on major exchanges with enhanced features.</p>
+            <a href="#">Read more →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <img src="https://via.placeholder.com/400x200" alt="News 2">
+          <div class="news-content">
+            <h3>Partnership Announcement</h3>
+            <p>Strategic partnership with leading DeFi protocols to expand ecosystem.</p>
+            <a href="#">Read more →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <img src="https://via.placeholder.com/400x200" alt="News 3">
+          <div class="news-content">
+            <h3>Community Growth</h3>
+            <p>Quant community reaches 100,000 members across social platforms.</p>
+            <a href="#">Read more →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a> | Disclaimer: Not financial advice.</p>
+    <p><a href="#">Home</a> | <a href="#">About</a> | <a href="#">Roadmap</a> | <a href="#">Contact Us</a> | <a href="#">BscScan</a></p>
+  </footer>
+
+  <script>
+    // Navbar Toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+        navbarMenu.classList.remove('active');
+      }
+    });
+
+    // Close menu when clicking a link
+    const navbarLinks = document.querySelectorAll('.navbar-link');
+    navbarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html> 

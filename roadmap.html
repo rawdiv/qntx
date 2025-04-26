@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quant (QNTX) - Roadmap</title>
+  <link href="https://fonts.cdnfonts.com/css/avenir-next-lt-pro" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: #000; 
+      color: #fff; 
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 500;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Avenir Next", "Avenir Next LT Pro", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 { 
+      font-size: 4rem; 
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+    }
+    
+    h2 { 
+      font-size: 2.5rem; 
+      line-height: 1.2;
+      margin: 3rem 0 1.5rem;
+      color: #fff;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    
+    h3 { 
+      font-size: 1.75rem; 
+      line-height: 1.3;
+      margin: 2rem 0 1rem;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    p { 
+      margin-bottom: 1.5rem;
+      color: #94a3b8;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section {
+      margin: 4rem 0;
+    }
+
+    /* Roadmap Styles */
+    .roadmap {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .phase {
+      position: relative;
+      margin: 4rem 0;
+      padding: 2rem;
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .phase:hover {
+      transform: translateY(-5px);
+    }
+
+    .phase-title {
+      font-size: 1.5rem;
+      color: #6366f1;
+      margin-bottom: 1rem;
+    }
+
+    .phase-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .milestone {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .milestone h4 {
+      color: #fff;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .milestone ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .milestone li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #94a3b8;
+    }
+
+    .milestone li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #6366f1;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      font-family: "Avenir Next", "Avenir Next LT Pro", sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .navbar-link {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-link:hover {
+      color: #fff;
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .navbar-menu.active {
+        display: flex;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-link {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Adjust main content to account for fixed navbar */
+    body {
+      padding-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+      
+      h1 { font-size: 3rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.5rem; }
+      
+      .phase-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Waitlist Section Styles */
+    .waitlist-section {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-radius: 16px;
+      padding: 3rem;
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .waitlist-form {
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+
+    .waitlist-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .waitlist-input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+
+    .waitlist-button {
+      background: #6366f1;
+      color: #fff;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .waitlist-button:hover {
+      background: #818cf8;
+      transform: translateY(-2px);
+    }
+
+    .waitlist-success {
+      display: none;
+      color: #10b981;
+      margin-top: 1rem;
+    }
+
+    .waitlist-error {
+      display: none;
+      color: #ef4444;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">QNTX</a>
+      <button class="navbar-toggle" id="navbarToggle">☰</button>
+      <div class="navbar-menu" id="navbarMenu">
+        <a href="index.html" class="navbar-link">Home</a>
+        <a href="index.html#about" class="navbar-link">About</a>
+        <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
+        <a href="docs.html" class="navbar-link">Whitepaper</a>
+        <a href="roadmap.html" class="navbar-link">Roadmap</a>
+        <a href="security.html" class="navbar-link">Security</a>
+        <a href="legal.html" class="navbar-link">Legal</a>
+        <a href="index.html#community" class="navbar-link">Community</a>
+        <a href="index.html#contact" class="navbar-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Our Roadmap to Success</h1>
+    
+    <div class="section">
+      <p>The roadmap below outlines the key milestones we plan to achieve as we develop and grow Quant (QNTX). We are committed to providing transparency and keeping our community updated every step of the way.</p>
+    </div>
+
+    <div class="roadmap">
+      <!-- Phase 1 -->
+      <div class="phase">
+        <h3 class="phase-title">Phase 1: Initial Development & Token Launch (0–3 months)</h3>
+        <div class="phase-content">
+          <div class="milestone">
+            <h4>Q1 - Conceptualization & Whitepaper</h4>
+            <ul>
+              <li>Finalizing the core idea behind Quant (QNTX)</li>
+              <li>Completing the Whitepaper with all technical details</li>
+              <li>Ensuring legal compliance</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q2 - Smart Contract Development</h4>
+            <ul>
+              <li>Developing and testing the smart contract</li>
+              <li>Getting the contract audited</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q3 - ICO & Token Launch</h4>
+            <ul>
+              <li>Launching the Initial Coin Offering (ICO)</li>
+              <li>Deploying QNTX on the blockchain</li>
+              <li>Listing on decentralized exchanges</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase">
+        <h3 class="phase-title">Phase 2: Community Building & Marketing (3–6 months)</h3>
+        <div class="phase-content">
+          <div class="milestone">
+            <h4>Q1 - Community Engagement</h4>
+            <ul>
+              <li>Building strong social media communities</li>
+              <li>Engaging with early adopters</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q2 - Marketing & Promotions</h4>
+            <ul>
+              <li>Collaborating with crypto influencers</li>
+              <li>Organizing airdrops and giveaways</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q3 - Exchange Listings</h4>
+            <ul>
+              <li>Apply for listings on major platforms</li>
+              <li>Listing on top decentralized exchanges</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase">
+        <h3 class="phase-title">Phase 3: Platform Development & Ecosystem Expansion (6–12 months)</h3>
+        <div class="phase-content">
+          <div class="milestone">
+            <h4>Q1 - DApp Development</h4>
+            <ul>
+              <li>Developing the Quant DApp</li>
+              <li>Implementing staking features</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q2 - Governance Features</h4>
+            <ul>
+              <li>Introducing governance mechanisms</li>
+              <li>Creating decentralized governance model</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q3 - Expanding Token Utility</h4>
+            <ul>
+              <li>Integrating QNTX for payments</li>
+              <li>NFT marketplace integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase">
+        <h3 class="phase-title">Phase 4: Exchange Listings & Global Adoption (12–24 months)</h3>
+        <div class="phase-content">
+          <div class="milestone">
+            <h4>Q1 - Major Exchange Listings</h4>
+            <ul>
+              <li>Securing listings on major exchanges</li>
+              <li>Improving trading volume and liquidity</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q2 - Strategic Partnerships</h4>
+            <ul>
+              <li>Forming strategic partnerships</li>
+              <li>Expanding real-world utility</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Q3 - Continuous Development</h4>
+            <ul>
+              <li>Introducing new features</li>
+              <li>Focus on scalability and security</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="phase">
+        <h3 class="phase-title">Phase 5: Long-Term Sustainability & Innovation (2+ years)</h3>
+        <div class="phase-content">
+          <div class="milestone">
+            <h4>Ongoing - Ecosystem Growth</h4>
+            <ul>
+              <li>Expanding the Quant ecosystem</li>
+              <li>Integrating with traditional finance</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Future - Bridging DeFi</h4>
+            <ul>
+              <li>Introducing stablecoins and loans</li>
+              <li>Adoption by financial institutions</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <h4>Ongoing - Community Engagement</h4>
+            <ul>
+              <li>Growing and engaging with community</li>
+              <li>Active participation in governance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Stay Connected with Us</h2>
+      <p>This roadmap will be updated regularly to reflect progress and new milestones. We're committed to delivering on our promises and are excited to have you on this journey with us.</p>
+    </div>
+
+    <!-- Waitlist Section -->
+    <div class="waitlist-section">
+      <h2>Join Our Waitlist</h2>
+      <p>Be among the first to know about our launch and early access opportunities. Join our waitlist to stay updated with the latest developments.</p>
+      
+      <form class="waitlist-form" id="waitlistForm">
+        <input type="email" class="waitlist-input" placeholder="Enter your email address" required>
+        <button type="submit" class="waitlist-button">Join Waitlist</button>
+        <p class="waitlist-success" id="waitlistSuccess">Thank you for joining our waitlist! We'll keep you updated.</p>
+        <p class="waitlist-error" id="waitlistError">Please enter a valid email address.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Navbar Toggle
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+        navbarMenu.classList.remove('active');
+      }
+    });
+
+    // Close menu when clicking a link
+    const navbarLinks = document.querySelectorAll('.navbar-link');
+    navbarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+      });
+    });
+
+    // Waitlist Form Handling
+    const waitlistForm = document.getElementById('waitlistForm');
+    const waitlistSuccess = document.getElementById('waitlistSuccess');
+    const waitlistError = document.getElementById('waitlistError');
+
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = waitlistForm.querySelector('input[type="email"]').value;
+      
+      // Here you would typically send this to your backend
+      // For now, we'll just show the success message
+      waitlistSuccess.style.display = 'block';
+      waitlistError.style.display = 'none';
+      waitlistForm.reset();
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        waitlistSuccess.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html> 

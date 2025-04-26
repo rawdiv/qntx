@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Disclaimer - Quant (QNTX)</title>
+    <link href="https://fonts.cdnfonts.com/css/avenir-next-lt-pro" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-weight: 500;
+            padding-top: 80px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Playfair Display", "Georgia", serif;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        h1 { 
+            font-size: 4rem; 
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+        
+        h2 { 
+            font-size: 2.5rem; 
+            line-height: 1.2;
+            margin: 3rem 0 1.5rem;
+            color: #fff;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        
+        h3 { 
+            font-size: 1.75rem; 
+            line-height: 1.3;
+            margin: 2rem 0 1rem;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        p { 
+            margin-bottom: 1.5rem;
+            color: #94a3b8;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin: 4rem 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-family: "Playfair Display", "Georgia", serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navbar-link {
+            font-family: "Georgia", "Times New Roman", serif;
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-link:hover {
+            color: #fff;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            .navbar-link {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Legal Section Styles */
+        .legal-section {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .legal-section h2 {
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section p {
+            color: #94a3b8;
+        }
+
+        .legal-section ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .legal-section li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .legal-section li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #6366f1;
+        }
+
+        .contact-info {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: rgba(99, 102, 241, 0.05);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #94a3b8;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #6366f1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+        }
+
+        /* Animation styles */
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animations for sections */
+        .security-section, .legal-section, .contact-info {
+            transition-delay: calc(var(--animation-order, 0) * 0.1s);
+        }
+
+        h1.animate { --animation-order: 0; }
+        h2.animate { --animation-order: 1; }
+        h3.animate { --animation-order: 2; }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">QNTX</a>
+            <button class="navbar-toggle" id="navbarToggle">☰</button>
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="index.html" class="navbar-link">Home</a>
+                <a href="index.html#about" class="navbar-link">About</a>
+                <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
+                <a href="docs.html" class="navbar-link">Whitepaper</a>
+                <a href="roadmap.html" class="navbar-link">Roadmap</a>
+                <a href="security.html" class="navbar-link">Security</a>
+                <a href="legal.html" class="navbar-link">Legal</a>
+                <a href="index.html#community" class="navbar-link">Community</a>
+                <a href="index.html#contact" class="navbar-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Legal Disclaimer</h1>
+        
+        <div class="legal-section">
+            <h2>Effective Date</h2>
+            <p>This Legal Disclaimer ("Disclaimer") applies to the website located at [Your Website URL], operated by Quant (QNTX) ("we," "us," or "our"). By accessing and using the Quant (QNTX) website, you agree to be bound by the following terms and conditions. If you do not agree to these terms, you must immediately cease using the website.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>General Information</h2>
+            <p>The information provided on this website is for general informational purposes only. All content, including text, images, graphics, and videos, is provided "as is" and is subject to change without notice. Quant (QNTX) does not guarantee the accuracy, completeness, or reliability of any information provided on this site.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Not Financial Advice</h2>
+            <p>The content and information on this website are not intended as financial, investment, or trading advice. Quant (QNTX) does not provide any advice on purchasing, selling, or holding any cryptocurrency, including our token QNTX. You should conduct your own research and consult with a qualified financial advisor before making any financial decisions, including investing in cryptocurrencies.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Cryptocurrency Risks</h2>
+            <p>Investing in cryptocurrencies involves high risk and can result in significant loss of capital. The value of cryptocurrencies is volatile and can fluctuate widely within short periods. Quant (QNTX) does not assume any responsibility for the losses or damages you may incur from trading or holding QNTX tokens or any other cryptocurrencies. You are fully responsible for your investment decisions and should carefully consider your risk tolerance.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>No Guarantees</h2>
+            <p>Quant (QNTX) makes no representations or warranties regarding the future performance or value of the QNTX token. There are no guarantees that our token will appreciate in value, and we do not promise any returns on investment. Past performance is not indicative of future results.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Regulatory Disclaimer</h2>
+            <p>Cryptocurrency regulations vary by jurisdiction, and it is your responsibility to understand the legal and regulatory status of cryptocurrencies in your region. Quant (QNTX) does not provide legal or regulatory advice and does not guarantee compliance with the laws of any particular jurisdiction. Users should consult with legal professionals to ensure compliance with local laws and regulations regarding cryptocurrency investments and transactions.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>No Liability for Losses</h2>
+            <p>To the fullest extent permitted by applicable law, Quant (QNTX) and its affiliates, partners, officers, directors, employees, and agents are not liable for any loss or damage, including but not limited to direct, indirect, incidental, special, punitive, or consequential damages arising from your use of or inability to use this website or its contents.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Third-Party Links</h2>
+            <p>The website may contain links to third-party websites or services that are not controlled or operated by Quant (QNTX). We are not responsible for the content, privacy policies, or practices of third-party sites.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Intellectual Property</h2>
+            <p>All content on the Quant (QNTX) website, including but not limited to text, graphics, logos, trademarks, and designs, are the property of Quant (QNTX) or its respective owners and are protected by copyright laws.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Dispute Resolution</h2>
+            <p>By using this website, you agree that any disputes arising from your use of this site will be subject to binding arbitration under the rules of [Arbitration Body]. You further agree that any legal action will be conducted in the jurisdiction of [Country or State].</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Limitation of Liability</h2>
+            <p>In no event will Quant (QNTX) or its affiliates be liable for any losses, damages, or expenses incurred as a result of your participation in any activities related to cryptocurrencies or the use of the QNTX token.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Privacy Policy</h2>
+            <p>Your use of the Quant (QNTX) website is governed by our Privacy Policy, which explains how we collect, use, and protect your personal data. By using this website, you consent to the practices outlined in the Privacy Policy.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>Changes to the Disclaimer</h2>
+            <p>Quant (QNTX) reserves the right to update, modify, or revise this Disclaimer at any time without prior notice. Any changes will be posted on this page with an updated date.</p>
+        </div>
+
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>If you have any questions about this Disclaimer or the terms of use, please contact us at:</p>
+            <p>Email: <a href="mailto:support@quantx.io">support@quantx.io</a></p>
+            <p>Telegram: [Insert link]</p>
+            <p>Discord: [Insert link]</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Quant (QNTX). All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html> 
