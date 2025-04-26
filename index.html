@@ -528,6 +528,159 @@
     body.loading {
       overflow: hidden;
     }
+
+    /* Add form modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(26, 19, 51, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-content {
+      background: rgba(45, 34, 84, 0.95);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 550px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(124, 58, 237, 0.4);
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #e0e7ff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    
+    .modal-close:hover {
+      color: #a78bfa;
+    }
+    
+    .modal-title {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .modal-subtitle {
+      color: #c7bfff;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: #e0e7ff;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Inter', Arial, sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+    }
+    
+    .form-input::placeholder {
+      color: rgba(224, 231, 255, 0.5);
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    
+    .checkbox-input {
+      margin-top: 0.2rem;
+      margin-right: 0.75rem;
+      accent-color: #7c3aed;
+    }
+    
+    .checkbox-label {
+      color: #e0e7ff;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    
+    .security-note {
+      background: rgba(124, 58, 237, 0.1);
+      border-left: 3px solid #7c3aed;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      color: #e0e7ff;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .submit-btn {
+      background: #7c3aed;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.9rem 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+    
+    .submit-btn:hover {
+      background: #9061f9;
+    }
+    
+    @media (max-width: 600px) {
+      .modal-content {
+        padding: 1.5rem 1rem;
+      }
+      
+      .modal-title {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body class="loading">
@@ -600,7 +753,7 @@
         </div>
       </div>
       <div style="text-align: center; margin-top: 2rem;" class="animate-on-scroll delay-300">
-        <a href="#" class="hero-btn">Join Airdrop Now</a>
+        <a href="#" class="hero-btn" id="airdropBtn">Join Airdrop Now</a>
       </div>
     </div>
   </section>
@@ -800,6 +953,69 @@
     <div class="footer-copy">&copy; 2024 Quant (QNTX). All rights reserved.</div>
     <div class="footer-disclaimer">This website is for informational purposes only and does not constitute financial advice.</div>
   </footer>
+
+  <!-- Airdrop Form Modal -->
+  <div class="modal-overlay" id="airdropModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2 class="modal-title">Join QNTX Airdrop</h2>
+      <p class="modal-subtitle">Complete the form below to participate in our airdrop campaign</p>
+      
+      <form id="airdropForm">
+        <div class="form-group">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" id="fullName" name="fullName" class="form-input" placeholder="Enter your full name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="walletAddress" class="form-label">Wallet Address</label>
+          <input type="text" id="walletAddress" name="walletAddress" class="form-input" placeholder="Enter your wallet address (BSC)" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="country" class="form-label">Country (Optional)</label>
+          <input type="text" id="country" name="country" class="form-input" placeholder="Enter your country">
+        </div>
+        
+        <div class="form-group">
+          <label for="telegram" class="form-label">Telegram Username</label>
+          <input type="text" id="telegram" name="telegram" class="form-input" placeholder="@username" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="twitter" class="form-label">Twitter Handle</label>
+          <input type="text" id="twitter" name="twitter" class="form-input" placeholder="@username" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="referral" class="form-label">Referral Code (Optional)</label>
+          <input type="text" id="referral" name="referral" class="form-input" placeholder="Enter referral code if you have one">
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="termsCheck" name="termsCheck" class="checkbox-input" required>
+          <label for="termsCheck" class="checkbox-label">I agree to the Terms & Conditions</label>
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="walletCheck" name="walletCheck" class="checkbox-input" required>
+          <label for="walletCheck" class="checkbox-label">I confirm that my wallet address is correct</label>
+        </div>
+        
+        <div class="security-note">
+          <strong>Security Notice:</strong> We will never ask for your private keys or passwords. Please verify you're on the official Quant Token website.
+        </div>
+        
+        <button type="submit" class="submit-btn">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
   <script>
     // Hamburger menu toggle
     const hamburger = document.getElementById('navbarHamburger');
@@ -867,6 +1083,45 @@
           loadingScreen.style.display = 'none';
         }, 500);
       }, 1000); // 1 second minimum loading time
+    });
+
+    // Airdrop form modal functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const airdropBtn = document.getElementById('airdropBtn');
+      const airdropModal = document.getElementById('airdropModal');
+      const modalClose = document.getElementById('modalClose');
+      const airdropForm = document.getElementById('airdropForm');
+      
+      // Open modal when airdrop button is clicked
+      airdropBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        airdropModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      });
+      
+      // Close modal when close button is clicked
+      modalClose.addEventListener('click', function() {
+        airdropModal.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable scrolling
+      });
+      
+      // Close modal when clicking outside the content
+      airdropModal.addEventListener('click', function(e) {
+        if (e.target === airdropModal) {
+          airdropModal.classList.remove('active');
+          document.body.style.overflow = ''; // Re-enable scrolling
+        }
+      });
+      
+      // Handle form submission
+      airdropForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // In a real implementation, you would send the form data to your server here
+        alert('Thank you for signing up for the QNTX airdrop! We will review your application and contact you soon.');
+        airdropModal.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable scrolling
+        airdropForm.reset();
+      });
     });
   </script>
 </body>
