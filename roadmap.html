@@ -113,6 +113,7 @@
       width: 100%;
       position: relative;
       margin: 2rem 0;
+      box-sizing: border-box;
     }
     .roadmap-container::before {
       content: '';
@@ -145,6 +146,7 @@
       box-shadow: 0 6px 32px 0 #7c3aed22;
       position: relative;
       z-index: 2;
+      box-sizing: border-box;
     }
     .roadmap-date {
       font-size: 1.3rem;
@@ -241,28 +243,38 @@
         justify-content: flex-start;
         padding-left: 50px;
         width: 100%;
+        box-sizing: border-box;
       }
       .roadmap-milestone {
         width: 100%;
         max-width: none;
+        box-sizing: border-box;
       }
       .roadmap-point {
         left: 20px;
       }
       .main-content {
         padding: 2rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
       }
     }
     @media (max-width: 600px) {
       .main-content {
         padding: 1.5rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
       }
       .section-title {
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
       }
       .roadmap-milestone {
         padding: 1.2rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
       }
       .roadmap-date {
         font-size: 1.2rem;

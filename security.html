@@ -120,6 +120,7 @@
             padding: 2rem;
             margin-bottom: 2rem;
             box-shadow: 0 6px 32px 0 #7c3aed22;
+            box-sizing: border-box;
         }
         .security-card h2 {
             font-size: 1.8rem;
@@ -233,14 +234,20 @@
         @media (max-width: 600px) {
             .main-content {
                 padding: 1.5rem 1rem;
+                width: 100%;
+                box-sizing: border-box;
             }
             .section-title {
                 font-size: 1.8rem;
                 margin-bottom: 1.5rem;
+                width: 100%;
+                box-sizing: border-box;
             }
             .security-card {
                 padding: 1.5rem 1rem;
                 margin-bottom: 1.5rem;
+                width: 100%;
+                box-sizing: border-box;
             }
             .security-card h2 {
                 font-size: 1.5rem;
@@ -248,6 +255,9 @@
             .audit-container {
                 gap: 0.5rem;
                 margin: 1rem 0;
+                width: 100%;
+                flex-wrap: wrap;
+                box-sizing: border-box;
             }
             .audit-badge {
                 padding: 0.5rem 0.8rem;
