@@ -458,6 +458,23 @@
         padding: 1.5rem 0.5rem 1rem 0.5rem; 
       }
     }
+    /* Scroll animation styles */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Different animation delays for staggered effects */
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+    .delay-400 { transition-delay: 0.4s; }
   </style>
 </head>
 <body>
@@ -471,36 +488,36 @@
       <button class="navbar-button">Get Started</button>
     </div>
   </nav>
-  <section class="main-hero">
-    <div class="hero-left">
+  <section class="main-hero animate-on-scroll">
+    <div class="hero-left animate-on-scroll">
       <div class="hero-title">QUANT<br>TOKEN</div>
       <div class="hero-sub">The next generation digital asset powering decentralized networks</div>
       <div class="hero-desc">Quant Token is built for the next generation of blockchain innovation — fast, efficient, and designed to scale. Whether you're trading, building, or investing, Quant Token ensures transparency, low fees, and global interoperability. Join a community that's reshaping the digital economy, one transaction at a time.</div>
       <button class="hero-btn">Buy Tokens</button>
     </div>
-    <div class="hero-right">
+    <div class="hero-right animate-on-scroll delay-200">
       <div class="hero-graphic">
         <img src="logoquant.png" alt="Quant Token Logo" style="width: 320px; max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 18px; box-shadow: 0 6px 32px 0 #7c3aed22;" />
       </div>
     </div>
   </section>
-  <section class="about-section">
+  <section class="about-section animate-on-scroll">
     <div class="about-title">About Quant</div>
     <div class="about-cols">
-      <div class="about-col">
+      <div class="about-col animate-on-scroll delay-100">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </div>
-      <div class="about-col">
+      <div class="about-col animate-on-scroll delay-200">
         Lorem ipsum dolor sit amet, consectetur adipiscing-elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
       </div>
     </div>
   </section>
   <!-- Airdrop Section -->
   <section class="section airdrop-section">
-    <div class="section-title">QNTX Airdrop</div>
+    <div class="section-title animate-on-scroll">QNTX Airdrop</div>
     <div class="section-content">
       <div class="feature-grid">
-        <div class="feature-card">
+        <div class="feature-card animate-on-scroll">
           <h3>Step 1: Follow Social Media</h3>
           <ul>
             <li>Follow our Twitter account</li>
@@ -508,7 +525,7 @@
             <li>Subscribe to our Discord server</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card animate-on-scroll delay-100">
           <h3>Step 2: Complete Tasks</h3>
           <ul>
             <li>Share our pinned tweet</li>
@@ -516,7 +533,7 @@
             <li>Fill out the airdrop form</li>
           </ul>
         </div>
-        <div class="feature-card">
+        <div class="feature-card animate-on-scroll delay-200">
           <h3>Step 3: Claim Tokens</h3>
           <ul>
             <li>Connect your wallet</li>
@@ -525,7 +542,7 @@
           </ul>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 2rem;">
+      <div style="text-align: center; margin-top: 2rem;" class="animate-on-scroll delay-300">
         <a href="#" class="hero-btn">Join Airdrop Now</a>
       </div>
     </div>
@@ -714,7 +731,7 @@
       </div>
     </div>
   </section>
-  <footer class="site-footer">
+  <footer class="site-footer animate-on-scroll">
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="tokenomics.html">Tokenomics</a>
@@ -738,6 +755,46 @@
       link.addEventListener('click', () => {
         if (window.innerWidth <= 900) menu.classList.remove('active');
       });
+    });
+
+    // Scroll animation observer
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
+      // Animate elements that are already visible when the page loads
+      animateElementsInView(animatedElements);
+      
+      // Create the IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            // Unobserve after animation
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null, // viewport
+        threshold: 0.1, // 10% of the item visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before item enters viewport
+      });
+      
+      // Observe all elements with the animate-on-scroll class
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Function to animate elements already in view on load
+      function animateElementsInView(elements) {
+        elements.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+          
+          if (rect.top <= windowHeight) {
+            element.classList.add('animated');
+          }
+        });
+      }
     });
   </script>
 </body>

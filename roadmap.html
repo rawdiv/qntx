@@ -292,6 +292,25 @@
         margin-bottom: 1rem;
       }
     }
+    
+    /* Scroll animation styles */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Different animation delays for staggered effects */
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+    .delay-400 { transition-delay: 0.4s; }
+    .delay-500 { transition-delay: 0.5s; }
   </style>
 </head>
 <body>
@@ -308,10 +327,10 @@
   </nav>
 
   <main class="main-content">
-    <div class="section-title">Quant (QNTX) Roadmap</div>
+    <div class="section-title animate-on-scroll">Quant (QNTX) Roadmap</div>
     <div class="roadmap-container">
       <div class="roadmap-item">
-        <div class="roadmap-milestone">
+        <div class="roadmap-milestone animate-on-scroll">
           <div class="roadmap-date">Q2 2025</div>
           <div class="roadmap-title">Genesis</div>
           <div class="roadmap-description">The beginning of the Quant ecosystem with the launch of our BEP-20 token on Binance Smart Chain.</div>
@@ -326,7 +345,7 @@
       </div>
       
       <div class="roadmap-item">
-        <div class="roadmap-milestone">
+        <div class="roadmap-milestone animate-on-scroll delay-100">
           <div class="roadmap-date">Q3 2025</div>
           <div class="roadmap-title">Expansion Phase</div>
           <div class="roadmap-description">Building out the ecosystem with new features and partnerships for wider adoption.</div>
@@ -341,7 +360,7 @@
       </div>
       
       <div class="roadmap-item">
-        <div class="roadmap-milestone">
+        <div class="roadmap-milestone animate-on-scroll delay-200">
           <div class="roadmap-date">Q4 2025</div>
           <div class="roadmap-title">Ecosystem Growth</div>
           <div class="roadmap-description">Expanding our technology and reaching new markets through strategic initiatives.</div>
@@ -356,7 +375,7 @@
       </div>
       
       <div class="roadmap-item">
-        <div class="roadmap-milestone">
+        <div class="roadmap-milestone animate-on-scroll delay-300">
           <div class="roadmap-date">Q1 2026</div>
           <div class="roadmap-title">Innovation</div>
           <div class="roadmap-description">Introducing new technologies and use cases to strengthen the Quant ecosystem.</div>
@@ -371,7 +390,7 @@
       </div>
       
       <div class="roadmap-item">
-        <div class="roadmap-milestone">
+        <div class="roadmap-milestone animate-on-scroll delay-400">
           <div class="roadmap-date">Q2 2026</div>
           <div class="roadmap-title">Global Adoption</div>
           <div class="roadmap-description">Focusing on worldwide adoption through improved accessibility and user experience.</div>
@@ -387,7 +406,7 @@
     </div>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer animate-on-scroll">
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="tokenomics.html">Tokenomics</a>
@@ -412,6 +431,46 @@
       link.addEventListener('click', () => {
         if (window.innerWidth <= 900) menu.classList.remove('active');
       });
+    });
+
+    // Scroll animation observer
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
+      // Animate elements that are already visible when the page loads
+      animateElementsInView(animatedElements);
+      
+      // Create the IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            // Unobserve after animation
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null, // viewport
+        threshold: 0.1, // 10% of the item visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before item enters viewport
+      });
+      
+      // Observe all elements with the animate-on-scroll class
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Function to animate elements already in view on load
+      function animateElementsInView(elements) {
+        elements.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+          
+          if (rect.top <= windowHeight) {
+            element.classList.add('animated');
+          }
+        });
+      }
     });
   </script>
 </body>
