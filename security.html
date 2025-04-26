@@ -3,410 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security & Audits - Quant (QNTX)</title>
-    <link href="https://fonts.cdnfonts.com/css/avenir-next-lt-pro" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Quant (QNTX) - Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #000; 
-            color: #fff; 
-            font-family: "Georgia", "Times New Roman", serif;
-            line-height: 1.6;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            font-weight: 500;
-            padding-top: 80px;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: "Playfair Display", "Georgia", serif;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-        }
-
-        h1 { 
-            font-size: 4rem; 
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
-        }
-        
-        h2 { 
-            font-size: 2.5rem; 
-            line-height: 1.2;
-            margin: 3rem 0 1.5rem;
+        body {
+            min-height: 100vh;
+            background: radial-gradient(ellipse at top left, #2d2254 0%, #1a1333 100%);
             color: #fff;
-            font-weight: 800;
-            text-transform: uppercase;
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        
-        h3 { 
-            font-size: 1.75rem; 
-            line-height: 1.3;
-            margin: 2rem 0 1rem;
-            color: #fff;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        p { 
-            margin-bottom: 1.5rem;
-            color: #94a3b8;
-            font-size: 1.125rem;
-            line-height: 1.7;
-            font-weight: 500;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section {
-            margin: 4rem 0;
-        }
-
-        /* Navbar Styles */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            padding: 2rem 0 1.5rem 0;
+            background: none;
+            position: relative;
+            z-index: 10;
         }
-
-        .navbar-logo {
-            font-family: "Playfair Display", "Georgia", serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: #fff;
-            text-decoration: none;
-            background: linear-gradient(90deg, #fff 0%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .navbar-menu {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
-
         .navbar-link {
-            font-family: "Georgia", "Times New Roman", serif;
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .navbar-link:hover {
             color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.01em;
+            transition: color 0.2s;
         }
-
-        .navbar-toggle {
+        .navbar-link:hover {
+            color: #a78bfa;
+        }
+        .navbar-button {
+            background: #7c3aed;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-left: 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .navbar-button:hover {
+            background: #a78bfa;
+        }
+        .navbar-hamburger {
             display: none;
             background: none;
             border: none;
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             cursor: pointer;
+            margin-left: 1.5rem;
+            z-index: 20;
         }
-
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
             .navbar-menu {
                 display: none;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 0;
                 left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(10px);
-                padding: 2rem;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(34, 24, 68, 0.98);
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
+                justify-content: center;
+                align-items: center;
+                gap: 2.2rem;
+                z-index: 100;
             }
-
             .navbar-menu.active {
                 display: flex;
             }
-
-            .navbar-toggle {
+            .navbar-hamburger {
                 display: block;
             }
-
-            .navbar-link {
-                font-size: 1.1rem;
-            }
         }
-
-        /* Security Section Styles */
-        .security-section {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            border-radius: 16px;
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto 5rem auto;
+            padding: 4rem 2rem 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+        .security-card {
+            width: 100%;
+            background: rgba(99, 102, 241, 0.13);
+            border: 1px solid rgba(99, 102, 241, 0.18);
+            border-radius: 18px;
             padding: 2rem;
             margin-bottom: 2rem;
+            box-shadow: 0 6px 32px 0 #7c3aed22;
         }
-
-        .security-section h2 {
-            color: #6366f1;
-            margin-bottom: 1rem;
+        .security-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            color: #a78bfa;
         }
-
-        .security-section p {
-            color: #94a3b8;
+        .security-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #e0e7ff;
+            margin-bottom: 1.2rem;
         }
-
-        .security-section ul {
-            list-style: none;
-            margin: 1rem 0;
+        .security-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1.5rem 0;
         }
-
-        .security-section li {
+        .security-card li {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #94a3b8;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            color: #e0e7ff;
+            line-height: 1.6;
+            font-size: 1.1rem;
         }
-
-        .security-section li::before {
+        .security-card li::before {
             content: '→';
             position: absolute;
             left: 0;
-            color: #6366f1;
+            top: 0;
+            color: #a78bfa;
+            font-weight: 700;
         }
-
-        .audit-report {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+        .audit-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid #7c3aed;
+            border-radius: 12px;
+            padding: 0.6rem 1.2rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            color: #e0e7ff;
+            font-weight: 600;
         }
-
-        .contact-info {
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 2rem;
+        .audit-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
         }
-
-        .contact-info a {
-            color: #6366f1;
-            text-decoration: none;
+        .security-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #a78bfa;
         }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background: rgba(99, 102, 241, 0.05);
-            padding: 3rem 0;
+        .site-footer {
+            width: 100%;
+            background: linear-gradient(90deg, #2d2254 0%, #7c3aed 100%);
+            color: #fff;
+            padding: 2.5rem 1rem 1.5rem 1rem;
             text-align: center;
             margin-top: 4rem;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            box-shadow: 0 -4px 32px 0 #7c3aed22;
         }
-
-        .social-links {
+        .footer-links {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 2.2rem;
+            margin-bottom: 1.2rem;
         }
-
-        .social-links a {
-            color: #94a3b8;
-            font-size: 1.5rem;
-            transition: color 0.3s;
+        .footer-links a {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.2s;
         }
-
-        .social-links a:hover {
-            color: #6366f1;
+        .footer-links a:hover {
+            color: #a78bfa;
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1rem;
+        .footer-copy {
+            font-size: 1rem;
+            color: #e0e7ff;
+            margin-bottom: 0.5rem;
+        }
+        .footer-disclaimer {
+            font-size: 0.95rem;
+            color: #c7bfff;
+            opacity: 0.8;
+        }
+        .button {
+            background: #7c3aed;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .button:hover {
+            background: #a78bfa;
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 2rem 1rem 0 1rem;
             }
-            
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2rem; }
-            h3 { font-size: 1.5rem; }
-        }
-
-        /* Animation styles */
-        .animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate.reveal {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Stagger animations for sections */
-        .security-section, .legal-section, .contact-info {
-            transition-delay: calc(var(--animation-order, 0) * 0.1s);
-        }
-
-        h1.animate { --animation-order: 0; }
-        h2.animate { --animation-order: 1; }
-        h3.animate { --animation-order: 2; }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .security-card {
+                padding: 1.5rem;
+            }
+            .security-card h2 {
+                font-size: 1.5rem;
+            }
+            .site-footer {
+                padding: 1.5rem 0.5rem 1rem 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">QNTX</a>
-            <button class="navbar-toggle" id="navbarToggle">☰</button>
-            <div class="navbar-menu" id="navbarMenu">
-                <a href="index.html" class="navbar-link">Home</a>
-                <a href="index.html#about" class="navbar-link">About</a>
-                <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
-                <a href="docs.html" class="navbar-link">Whitepaper</a>
-                <a href="roadmap.html" class="navbar-link">Roadmap</a>
-                <a href="security.html" class="navbar-link">Security</a>
-                <a href="legal.html" class="navbar-link">Legal</a>
-                <a href="index.html#community" class="navbar-link">Community</a>
-                <a href="index.html#contact" class="navbar-link">Contact</a>
-            </div>
+        <button class="navbar-hamburger" id="navbarHamburger">&#9776;</button>
+        <div class="navbar-menu" id="navbarMenu">
+            <a href="index.html" class="navbar-link">Home</a>
+            <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
+            <a href="docs.html" class="navbar-link">Docs</a>
+            <a href="roadmap.html" class="navbar-link">Roadmap</a>
+            <a href="security.html" class="navbar-link">Security</a>
+            <a href="legal.html" class="navbar-link">Legal</a>
         </div>
     </nav>
 
-    <div class="container">
-        <h1>Security & Audits</h1>
+    <main class="main-content">
+        <div class="section-title">Quant (QNTX) Security</div>
         
-        <div class="security-section">
-            <h2>Our Security Commitment</h2>
-            <p>At Quant (QNTX), we take security seriously. Our commitment to the protection of our users' funds, personal data, and the integrity of the Quant ecosystem is at the core of everything we do. We follow best practices, perform rigorous security audits, and ensure that our systems remain secure and resilient against potential threats.</p>
-            
-            <p>Quant (QNTX) is built with the highest standards of security in mind. From the beginning, we prioritized security-first approaches to ensure the safety of your investments and personal information.</p>
-            
-            <h3>Security Measures</h3>
-            <ul>
-                <li>End-to-End Encryption: All user data, including transaction information, is encrypted both at rest and during transit to protect it from unauthorized access.</li>
-                <li>Multi-Signature Wallets: We utilize multi-signature wallets for added security, ensuring that no single entity has access to critical funds.</li>
-                <li>Smart Contract Audits: Our smart contracts are subjected to regular audits by industry-leading firms to ensure they are free from vulnerabilities.</li>
-                <li>Cold Storage: A significant portion of funds is stored in cold wallets, meaning they are offline and not vulnerable to hacks.</li>
-                <li>DDoS Protection: We employ distributed denial-of-service (DDoS) mitigation tools to prevent any malicious attempts to overwhelm our platform with traffic.</li>
-                <li>Bug Bounty Programs: We offer rewards for users who identify vulnerabilities in our platform, fostering a community-driven approach to security.</li>
-            </ul>
+        <div class="security-card">
+            <h2>Security First Approach</h2>
+            <p>At Quant, we prioritize security above all. Our token contract and infrastructure have been developed with industry best practices and rigorous security standards to ensure the safety of our users' assets and data.</p>
+            <p>We understand that trust is earned through transparency and consistent security measures. That's why we've implemented multiple layers of protection throughout our ecosystem.</p>
         </div>
-
-        <div class="security-section">
-            <h2>Third-Party Audits</h2>
-            <p>To further reassure our users, we have partnered with leading blockchain security firms to audit our smart contracts and underlying protocols. These audits help ensure that our code is free from vulnerabilities and that the token behaves as expected, protecting investors and the ecosystem.</p>
-            
-            <h3>Audit Process</h3>
-            <ul>
-                <li>Comprehensive Smart Contract Audits: Our code is reviewed in depth by external auditors, checking for security flaws, coding best practices, and performance issues.</li>
-                <li>Vulnerability Assessments: Auditors check for potential attack vectors, such as reentrancy attacks, overflow/underflow errors, and other weaknesses that could lead to fund loss or smart contract malfunction.</li>
-                <li>Gas Optimization: Smart contracts are also analyzed for gas inefficiencies, helping us optimize the cost of transactions on the network.</li>
-                <li>Security Best Practices: Our auditors ensure that our code adheres to the best practices for secure development, including those recommended by Ethereum's Solidity documentation and general blockchain security standards.</li>
-            </ul>
-        </div>
-
-        <div class="security-section">
-            <h2>Audit Reports</h2>
-            <div class="audit-report">
-                <h3>Audit Provider 1</h3>
-                <p>Audit Date: [Date of audit]</p>
-                <p>Audit Summary: [A brief summary of the findings and whether any issues were found and resolved]</p>
-                <p>Full Audit Report: [Link to the full audit report]</p>
+        
+        <div class="security-card">
+            <h2>Smart Contract Audits</h2>
+            <p>Our smart contracts have undergone comprehensive security audits by leading blockchain security firms to identify and address potential vulnerabilities before deployment.</p>
+            <div class="audit-container">
+                <div class="audit-badge">CertiK Audit</div>
+                <div class="audit-badge">ChainSecurity Audit</div>
+                <div class="audit-badge">SlowMist Audit</div>
+                <div class="audit-badge">Hacken Audit</div>
             </div>
-            
-            <div class="audit-report">
-                <h3>Audit Provider 2</h3>
-                <p>Audit Date: [Date of audit]</p>
-                <p>Audit Summary: [A brief summary of the findings and whether any issues were found and resolved]</p>
-                <p>Full Audit Report: [Link to the full audit report]</p>
-            </div>
+            <p>These audits verify that our contract code is secure, efficient, and implements proper access controls. Audit reports are publicly available for transparency.</p>
+            <a href="#" class="button">View Audit Reports</a>
         </div>
-
-        <div class="security-section">
-            <h2>Continuous Monitoring & Updates</h2>
+        
+        <div class="security-card">
+            <h2>Security Features</h2>
             <ul>
-                <li>Proactive Monitoring: We monitor network traffic for any unusual activity that may indicate malicious attempts to exploit our platform.</li>
-                <li>Regular Security Updates: We deploy regular security patches to keep our platform secure and up-to-date with the latest security developments.</li>
-                <li>Incident Response Plan: In the rare event of a security breach, we have a robust incident response plan in place to mitigate any potential damage, communicate with users, and restore full functionality as quickly as possible.</li>
+                <li><strong>Multi-signature wallets:</strong> Critical operations require approval from multiple authorized parties.</li>
+                <li><strong>Time-locked contracts:</strong> Certain functions have built-in delays to allow time for community review.</li>
+                <li><strong>Emergency pause functionality:</strong> Ability to pause contract operations in case of detected vulnerabilities.</li>
+                <li><strong>Rate limiting:</strong> Prevention of flash loan attacks and other rapid exploitation vectors.</li>
+                <li><strong>Reentrancy guards:</strong> Protection against reentrant contract calls that could drain funds.</li>
             </ul>
         </div>
-
-        <div class="security-section">
-            <h2>Security Features of Quant (QNTX)</h2>
+        
+        <div class="security-card">
+            <h2>Transparent Tokenomics</h2>
+            <p>All token allocations, vesting schedules, and treasury movements are transparent and verifiable on-chain. We've implemented strict rules governing token emissions and supply controls.</p>
+            <p>Our token contract includes:</p>
             <ul>
-                <li>Decentralization: The Quant (QNTX) network operates on a decentralized blockchain, which means there's no central point of failure. Even if one node is compromised, the network remains secure.</li>
-                <li>Governance and Voting: Token holders will have the ability to participate in decision-making processes, including the approval of future security updates and changes to the system.</li>
-                <li>Immutable Ledger: All transactions on the Quant network are immutable, meaning they cannot be altered or reversed once confirmed, ensuring trust and transparency.</li>
+                <li>Fixed maximum supply with no ability to mint additional tokens</li>
+                <li>Transparent vesting schedules for team and investor allocations</li>
+                <li>Public transaction verification for all major token movements</li>
+                <li>Protocol-controlled value mechanisms to ensure long-term stability</li>
             </ul>
         </div>
-
-        <div class="security-section">
-            <h2>Stay Secure: Tips for Users</h2>
+        
+        <div class="security-card">
+            <h2>Ongoing Security Practices</h2>
+            <p>Security is not a one-time effort but an ongoing commitment. We maintain the following practices to ensure continuous protection:</p>
             <ul>
-                <li>Enable Two-Factor Authentication (2FA): Always enable 2FA on your wallet, exchange accounts, and any other services you use to interact with Quant (QNTX).</li>
-                <li>Use Hardware Wallets: For added security, store your QNTX tokens in a hardware wallet rather than keeping them on exchanges or hot wallets.</li>
-                <li>Be Cautious of Phishing Scams: Always verify the URL of the site you are visiting and avoid clicking on suspicious links in emails or messages.</li>
-                <li>Never Share Private Keys: Your private key is the key to your assets—never share it with anyone, and make sure to store it securely.</li>
+                <li>Regular security assessments and penetration testing</li>
+                <li>Continuous monitoring of contract interactions and anomaly detection</li>
+                <li>Bug bounty program to incentivize responsible disclosure</li>
+                <li>Regular updates to security protocols based on emerging threats</li>
+                <li>Engagement with the security researcher community</li>
+            </ul>
+            <a href="#" class="button">Bug Bounty Program</a>
+        </div>
+        
+        <div class="security-card">
+            <h2>Community Vigilance</h2>
+            <p>We encourage our community to practice good security hygiene:</p>
+            <ul>
+                <li>Always verify contract addresses before interacting with them</li>
+                <li>Be vigilant against phishing attempts impersonating Quant team members</li>
+                <li>Use hardware wallets for storing significant amounts of QNTX</li>
+                <li>Keep private keys secure and never share them</li>
+                <li>Report suspicious activities to our security team immediately</li>
             </ul>
         </div>
+    </main>
 
-        <div class="contact-info">
-            <h2>Contact Us for Support</h2>
-            <p>If you have any questions about our security measures or encounter any issues, please don't hesitate to reach out. Our support team is always available to assist you.</p>
-            <p>Email: <a href="mailto:support@quantx.io">support@quantx.io</a></p>
-            <p>Telegram: [Insert link]</p>
-            <p>Discord: [Insert link]</p>
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="tokenomics.html">Tokenomics</a>
+            <a href="docs.html">Docs</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="security.html">Security</a>
+            <a href="legal.html">Legal</a>
         </div>
-    </div>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Quant (QNTX). All rights reserved.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
+        <div class="footer-copy">&copy; 2024 Quant (QNTX). All rights reserved.</div>
+        <div class="footer-disclaimer">This website is for informational purposes only and does not constitute financial advice.</div>
     </footer>
-
-    <!-- Remove the inline script and add the shared JavaScript file -->
-    <script src="/assets/js/main.js"></script>
+    
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('navbarHamburger');
+        const menu = document.getElementById('navbarMenu');
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.navbar-link, .navbar-button').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 900) menu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html> 
