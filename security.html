@@ -8,7 +8,7 @@
     <style>
         body {
             min-height: 100vh;
-            background: radial-gradient(ellipse at top left, #2d2254 0%, #1a1333 100%);
+            background: #000;
             color: #fff;
             font-family: 'Inter', Arial, sans-serif;
             margin: 0;
@@ -24,25 +24,65 @@
             position: relative;
             z-index: 10;
         }
-        .navbar-menu {
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #FFD600;
+            letter-spacing: 0.05em;
             display: flex;
-            gap: 2.5rem;
             align-items: center;
+            gap: 0.5rem;
+        }
+        .navbar-hamburger {
+            display: block;
+            background: none;
+            border: none;
+            color: #FFD600;
+            font-size: 2.2rem;
+            cursor: pointer;
+            margin-left: 1.5rem;
+            z-index: 20;
+        }
+        .navbar-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #111;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-radius: 0 0 12px 12px;
+            padding: 1rem 0.5rem;
+            gap: 1rem;
+            z-index: 15;
+            animation: fadeIn 0.2s;
+        }
+        .navbar-menu.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .navbar-link {
-            color: #fff;
+            color: #FFD600;
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
             letter-spacing: 0.01em;
             transition: color 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-align: left;
         }
-        .navbar-link:hover {
-            color: #a78bfa;
+        .navbar-link:hover, .navbar-link.active {
+            background: #FFD60022;
+            color: #fff700;
         }
         .navbar-button {
-            background: #7c3aed;
-            color: #fff;
+            background: #FFD600;
+            color: #000;
             border: none;
             border-radius: 12px;
             padding: 0.75rem 2rem;
@@ -53,47 +93,8 @@
             transition: background 0.2s;
         }
         .navbar-button:hover {
-            background: #a78bfa;
-        }
-        .navbar-hamburger {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 2.2rem;
-            cursor: pointer;
-            margin-left: 1.5rem;
-            z-index: 20;
-        }
-        @media (max-width: 900px) {
-            .navbar {
-                padding: 1rem 1rem;
-            }
-            .navbar-menu {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgba(34, 24, 68, 0.98);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2.2rem;
-                z-index: 100;
-            }
-            .navbar-menu.active {
-                display: flex;
-            }
-            .navbar-hamburger {
-                display: block;
-                position: absolute;
-                right: 1rem;
-            }
-            .main-content {
-                padding: 2rem 1rem;
-            }
+            background: #fff700;
+            color: #000;
         }
         .main-content {
             max-width: 900px;
@@ -103,18 +104,12 @@
             flex-direction: column;
             align-items: center;
         }
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            letter-spacing: -0.02em;
-            text-align: center;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        .section-title, .main-content h1, h2, h3, h4 {
+            color: #FFD600;
         }
         .security-card {
             width: 100%;
-            background: rgba(99, 102, 241, 0.13);
+            background: #111;
             border: 1px solid rgba(99, 102, 241, 0.18);
             border-radius: 18px;
             padding: 2rem;
@@ -178,14 +173,14 @@
         }
         .site-footer {
             width: 100%;
-            background: linear-gradient(90deg, #2d2254 0%, #7c3aed 100%);
+            background: #000;
             color: #fff;
             padding: 2.5rem 1rem 1.5rem 1rem;
             text-align: center;
             margin-top: 4rem;
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
-            box-shadow: 0 -4px 32px 0 #7c3aed22;
+            box-shadow: 0 -4px 32px 0 #FFD60022;
         }
         .footer-links {
             display: flex;
@@ -195,14 +190,14 @@
             margin-bottom: 1.2rem;
         }
         .footer-links a {
-            color: #fff;
+            color: #FFD600;
             font-weight: 600;
             text-decoration: none;
             font-size: 1.1rem;
             transition: color 0.2s;
         }
         .footer-links a:hover {
-            color: #a78bfa;
+            color: #fff700;
         }
         .footer-copy {
             font-size: 1rem;
@@ -215,8 +210,8 @@
             opacity: 0.8;
         }
         .button {
-            background: #7c3aed;
-            color: #fff;
+            background: #FFD600;
+            color: #000;
             border: none;
             border-radius: 12px;
             padding: 0.75rem 2rem;
@@ -229,55 +224,77 @@
             transition: background 0.2s;
         }
         .button:hover {
-            background: #a78bfa;
+            background: #fff700;
+            color: #000;
+        }
+        @media (max-width: 900px) {
+            .feature-grid, .stats-grid, .timeline, .security-card, .main-content {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                width: 100%;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                box-sizing: border-box;
+            }
+            .feature-card, .stat-card, .event, .security-card {
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            .section, .section-content, .main-content {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
         @media (max-width: 600px) {
-            .main-content {
-                padding: 1.5rem 1rem;
-                width: 100%;
-                box-sizing: border-box;
+            .feature-grid, .stats-grid, .timeline, .security-card, .main-content {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                max-width: 100%;
             }
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
-                width: 100%;
-                box-sizing: border-box;
+            .feature-card, .stat-card, .event, .security-card {
+                padding: 1rem;
             }
-            .security-card {
-                padding: 1.5rem 1rem;
-                margin-bottom: 1.5rem;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            .security-card h2 {
-                font-size: 1.5rem;
-            }
-            .audit-container {
-                gap: 0.5rem;
-                margin: 1rem 0;
-                width: 100%;
-                flex-wrap: wrap;
-                box-sizing: border-box;
-            }
-            .audit-badge {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.9rem;
-                margin: 0.3rem;
-            }
-            .site-footer {
-                padding: 1.5rem 0.5rem 1rem 0.5rem;
-            }
-            .footer-links {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                margin-bottom: 1rem;
-            }
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        .loading-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            filter: brightness(1.2) drop-shadow(0 0 10px #FFD600);
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 214, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #FFD600;
+            animation: spin 1s infinite linear;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logoquant.png" alt="Quant Logo" style="height:32px;width:32px;border-radius:6px;vertical-align:middle;"> Quant
+        </div>
         <button class="navbar-hamburger" id="navbarHamburger">&#9776;</button>
         <div class="navbar-menu" id="navbarMenu">
             <a href="index.html" class="navbar-link">Home</a>
@@ -286,6 +303,7 @@
             <a href="roadmap.html" class="navbar-link">Roadmap</a>
             <a href="security.html" class="navbar-link">Security</a>
             <a href="legal.html" class="navbar-link">Legal</a>
+            <button class="navbar-button">Get Started</button>
         </div>
     </nav>
 
@@ -380,11 +398,10 @@
         hamburger.addEventListener('click', () => {
             menu.classList.toggle('active');
         });
-        // Close menu on link click (mobile)
-        document.querySelectorAll('.navbar-link, .navbar-button').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 900) menu.classList.remove('active');
-            });
+        document.addEventListener('click', function(e) {
+            if (!menu.contains(e.target) && e.target !== hamburger) {
+                menu.classList.remove('active');
+            }
         });
     </script>
 </body>

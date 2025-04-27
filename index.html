@@ -8,11 +8,14 @@
   <style>
     body {
       min-height: 100vh;
-      background: radial-gradient(ellipse at top left, #2d2254 0%, #1a1333 100%);
+      background: #000;
       color: #fff;
       font-family: 'Inter', Arial, sans-serif;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
     .navbar {
       width: 100%;
@@ -24,25 +27,65 @@
       position: relative;
       z-index: 10;
     }
-    .navbar-menu {
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #FFD600;
+      letter-spacing: 0.05em;
       display: flex;
-      gap: 2.5rem;
       align-items: center;
+      gap: 0.5rem;
+    }
+    .navbar-hamburger {
+      display: block;
+      background: none;
+      border: none;
+      color: #FFD600;
+      font-size: 2.2rem;
+      cursor: pointer;
+      margin-left: 1.5rem;
+      z-index: 20;
+    }
+    .navbar-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #111;
+      min-width: 200px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      border-radius: 0 0 12px 12px;
+      padding: 1rem 0.5rem;
+      gap: 1rem;
+      z-index: 15;
+      animation: fadeIn 0.2s;
+    }
+    .navbar-menu.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .navbar-link {
-      color: #fff;
+      color: #FFD600;
       text-decoration: none;
       font-weight: 500;
       font-size: 1.1rem;
       letter-spacing: 0.01em;
       transition: color 0.2s;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-align: left;
     }
-    .navbar-link:hover {
-      color: #a78bfa;
+    .navbar-link:hover, .navbar-link.active {
+      background: #FFD60022;
+      color: #fff700;
     }
     .navbar-button {
-      background: #7c3aed;
-      color: #fff;
+      background: #FFD600;
+      color: #000;
       border: none;
       border-radius: 12px;
       padding: 0.75rem 2rem;
@@ -53,17 +96,8 @@
       transition: background 0.2s;
     }
     .navbar-button:hover {
-      background: #a78bfa;
-    }
-    .navbar-hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 2.2rem;
-      cursor: pointer;
-      margin-left: 1.5rem;
-      z-index: 20;
+      background: #fff700;
+      color: #000;
     }
     .main-hero {
       display: flex;
@@ -101,8 +135,8 @@
       max-width: 420px;
     }
     .hero-btn {
-      background: #7c3aed;
-      color: #fff;
+      background: #FFD600;
+      color: #000;
       border: none;
       border-radius: 12px;
       padding: 1rem 2.5rem;
@@ -113,7 +147,8 @@
       box-shadow: 0 4px 24px 0 #7c3aed33;
     }
     .hero-btn:hover {
-      background: #a78bfa;
+      background: #fff700;
+      color: #000;
     }
     .hero-right {
       flex: 1 1 0;
@@ -168,7 +203,7 @@
       margin-bottom: 2.5rem;
       letter-spacing: -0.02em;
       text-align: center;
-      color: #fff;
+      color: #FFD600;
       text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
     }
     .section-content {
@@ -177,27 +212,33 @@
       flex-direction: column;
       align-items: center;
     }
-    .feature-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2.5rem;
-      justify-content: center;
+    .feature-grid, .stats-grid, .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
       width: 100%;
-      margin: 2rem 0;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      box-sizing: border-box;
     }
     .feature-card {
-      background: rgba(99, 102, 241, 0.13);
-      border: 1px solid rgba(99, 102, 241, 0.18);
-      border-radius: 18px;
-      padding: 2rem 1.5rem;
-      min-width: 260px;
-      max-width: 340px;
-      flex: 1 1 260px;
-      box-shadow: 0 6px 32px 0 #7c3aed22;
+      background: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin: 0 auto;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     }
     .feature-card h3 {
       font-size: 1.3rem;
@@ -205,8 +246,15 @@
       margin-bottom: 1rem;
       color: #fff;
     }
+    .feature-icon {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+    }
     .feature-card p, .feature-card ul, .feature-card li {
-      color: #e0e7ff;
+      color: #fff;
       font-size: 1.05rem;
       margin-bottom: 0.7rem;
     }
@@ -219,8 +267,8 @@
       margin-bottom: 0.3rem;
     }
     .hero-btn, .feature-card a.hero-btn {
-      background: #7c3aed;
-      color: #fff;
+      background: #FFD600;
+      color: #000;
       border: none;
       border-radius: 12px;
       padding: 0.8rem 2rem;
@@ -235,27 +283,20 @@
       display: inline-block;
     }
     .hero-btn:hover {
-      background: #a78bfa;
-    }
-    .stats-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin: 2rem 0;
-      width: 100%;
+      background: #fff700;
+      color: #000;
     }
     .stat-card {
-      background: rgba(99, 102, 241, 0.13);
-      border: 1px solid rgba(99, 102, 241, 0.18);
-      border-radius: 18px;
-      padding: 2rem 1.5rem;
-      min-width: 180px;
-      max-width: 220px;
-      flex: 1 1 180px;
-      box-shadow: 0 6px 32px 0 #7c3aed22;
+      background: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       text-align: center;
-      color: #fff;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .stat-card h3 {
       font-size: 2rem;
@@ -264,29 +305,17 @@
       color: #fff;
     }
     .stat-card p {
-      color: #e0e7ff;
+      color: #fff;
       font-size: 1.05rem;
     }
-    .timeline {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 2rem;
-      margin: 2rem 0 0 0;
-      position: relative;
-    }
     .event {
-      background: rgba(99, 102, 241, 0.13);
-      border: 1px solid rgba(99, 102, 241, 0.18);
-      border-radius: 18px;
-      padding: 1.5rem 1.2rem;
-      min-width: 220px;
-      max-width: 260px;
-      box-shadow: 0 6px 32px 0 #7c3aed22;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      background: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      flex: 1;
+      min-width: 0;
+      box-sizing: border-box;
       position: relative;
     }
     .event h4 {
@@ -301,7 +330,7 @@
     }
     .event li {
       list-style: disc;
-      color: #e0e7ff;
+      color: #fff;
       font-size: 1.02rem;
       margin-bottom: 0.3rem;
     }
@@ -324,7 +353,7 @@
       margin-bottom: 1.2rem;
     }
     .footer-links a {
-      color: #fff;
+      color: #FFD600;
       font-weight: 600;
       text-decoration: none;
       font-size: 1.1rem;
@@ -344,118 +373,129 @@
       opacity: 0.8;
     }
     /* --- Mobile styles only below --- */
-    @media (max-width: 900px) {
+    @media screen and (max-width: 900px) {
       .navbar {
-        padding: 1rem 1rem;
+        padding: 1rem 1.5rem;
+        flex-direction: row;
+        justify-content: space-between;
       }
+      
+      .navbar-hamburger {
+        display: block;
+        margin-left: auto;
+      }
+      
       .navbar-menu {
         display: none;
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(34, 24, 68, 0.98);
+        right: 0;
+        background: linear-gradient(145deg, #221844, #2e1e5e);
+        padding: 2rem;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.2rem;
-        z-index: 100;
+        gap: 1.5rem;
+        z-index: 10;
       }
+      
       .navbar-menu.active {
         display: flex;
       }
-      .navbar-hamburger {
-        display: block;
-        position: absolute;
-        right: 1rem;
-      }
-      .main-hero, .about-section, .section {
-        padding: 2rem 1rem 0 1rem;
-      }
+      
       .main-hero {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 2.5rem !important;
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        margin: 0;
       }
+      
       .hero-right {
         display: none;
       }
-      .about-cols {
-        flex-direction: column !important;
-        gap: 1.5rem !important;
+      
+      .hero-content {
+        width: 100%;
+        padding: 0;
+        margin: 0;
       }
-      .feature-grid, .stats-grid {
+      
+      .feature-grid, .stats-grid, .timeline {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1.5rem !important;
+        gap: 1.5rem;
         width: 100%;
-        max-width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
       }
-      .timeline {
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-        align-items: center;
-        width: 100%;
-      }
+      
       .feature-card, .stat-card, .event {
         width: 100%;
-        max-width: none;
+        margin: 0;
         box-sizing: border-box;
+      }
+      
+      .section, .section-content {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      
+      .about-section {
+        padding: 2rem 1.5rem;
         margin: 0;
       }
-      .footer-links {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+      
+      .section {
+        padding: 2rem 1.5rem;
+        margin: 0;
+      }
+      
+      .cta-section {
+        padding: 2rem 1.5rem;
+        margin: 0;
+      }
+      
+      .footer {
+        padding: 2rem 1.5rem;
+        margin: 0;
       }
     }
-    @media (max-width: 600px) {
-      .main-hero { 
-        padding: 1rem 1rem;
-        text-align: center; 
+    
+    @media screen and (max-width: 600px) {
+      .navbar {
+        padding: 0.8rem 1rem;
       }
-      .hero-left {
-        align-items: center;
+      
+      .navbar-menu {
+        padding: 1.5rem;
       }
-      .about-section { 
-        padding: 1.5rem 1rem 0 1rem; 
-        text-align: center;
+      
+      .feature-grid, .stats-grid, .timeline {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        max-width: 100%;
       }
-      .hero-title { 
-        font-size: 2.1rem; 
-        text-align: center;
+      
+      .feature-card, .stat-card, .event {
+        padding: 1rem;
       }
-      .hero-sub, .hero-desc {
-        text-align: center;
+      
+      .about-section {
+        padding: 1.5rem 1rem;
       }
-      .section-title { 
-        font-size: 1.5rem; 
-      }
-      .feature-card, .stat-card, .event, .about-col { 
-        min-width: 0; 
-        width: 100%;
-        max-width: 100%; 
-        padding: 1.2rem 1rem; 
-        margin: 0;
-        box-sizing: border-box;
-      }
+      
       .section {
-        padding: 3rem 1rem 0 1rem;
-        width: 100%;
-        box-sizing: border-box;
+        padding: 1.5rem 1rem;
       }
-      .section-content {
-        width: 100%;
-        box-sizing: border-box;
+      
+      .cta-section {
+        padding: 1.5rem 1rem;
       }
-      .feature-grid, .stats-grid {
-        width: 100%;
-        margin: 1rem 0;
-        padding: 0;
-      }
-      .site-footer { 
-        padding: 1.5rem 0.5rem 1rem 0.5rem; 
+      
+      .footer {
+        padding: 1.5rem 1rem;
       }
     }
     /* Scroll animation styles */
@@ -552,7 +592,7 @@
     }
     
     .modal-content {
-      background: rgba(45, 34, 84, 0.95);
+      background: #111;
       border: 1px solid rgba(124, 58, 237, 0.3);
       border-radius: 20px;
       width: 90%;
@@ -570,7 +610,7 @@
       right: 1rem;
       background: none;
       border: none;
-      color: #e0e7ff;
+      color: #fff;
       font-size: 1.5rem;
       cursor: pointer;
       transition: color 0.2s;
@@ -600,7 +640,7 @@
     
     .form-label {
       display: block;
-      color: #e0e7ff;
+      color: #fff;
       margin-bottom: 0.5rem;
       font-weight: 500;
     }
@@ -639,7 +679,7 @@
     }
     
     .checkbox-label {
-      color: #e0e7ff;
+      color: #fff;
       font-size: 0.95rem;
       line-height: 1.4;
     }
@@ -649,14 +689,14 @@
       border-left: 3px solid #7c3aed;
       padding: 1rem;
       margin: 1.5rem 0;
-      color: #e0e7ff;
+      color: #fff;
       font-size: 0.95rem;
       line-height: 1.5;
     }
     
     .submit-btn {
-      background: #7c3aed;
-      color: #fff;
+      background: #FFD600;
+      color: #000;
       border: none;
       border-radius: 12px;
       padding: 0.9rem 2rem;
@@ -669,7 +709,8 @@
     }
     
     .submit-btn:hover {
-      background: #9061f9;
+      background: #fff700;
+      color: #000;
     }
     
     @media (max-width: 600px) {
@@ -689,12 +730,17 @@
     <img src="logoquant.png" alt="Quant Logo" class="loading-logo">
   </div>
   <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="logoquant.png" alt="Quant Logo" style="height:32px;width:32px;border-radius:6px;vertical-align:middle;"> Quant
+    </div>
     <button class="navbar-hamburger" id="navbarHamburger">&#9776;</button>
     <div class="navbar-menu" id="navbarMenu">
-      <a href="#" class="navbar-link">About</a>
-      <a href="#" class="navbar-link">Features</a>
-      <a href="#" class="navbar-link">Tokenomics</a>
-      <a href="#" class="navbar-link">Contact</a>
+      <a href="index.html" class="navbar-link">Home</a>
+      <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
+      <a href="docs.html" class="navbar-link">Docs</a>
+      <a href="roadmap.html" class="navbar-link">Roadmap</a>
+      <a href="security.html" class="navbar-link">Security</a>
+      <a href="legal.html" class="navbar-link">Legal</a>
       <button class="navbar-button">Get Started</button>
     </div>
   </nav>
@@ -1023,11 +1069,10 @@
     hamburger.addEventListener('click', () => {
       menu.classList.toggle('active');
     });
-    // Close menu on link click (mobile)
-    document.querySelectorAll('.navbar-link, .navbar-button').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 900) menu.classList.remove('active');
-      });
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && e.target !== hamburger) {
+        menu.classList.remove('active');
+      }
     });
 
     // Scroll animation observer
