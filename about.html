@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>About Quant Token - The next generation digital asset</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: none;
+      position: relative;
+      z-index: 10;
+    }
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #FFD600;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .navbar-hamburger {
+      display: block;
+      background: none;
+      border: none;
+      color: #FFD600;
+      font-size: 2.2rem;
+      cursor: pointer;
+      margin-left: 1.5rem;
+      z-index: 20;
+    }
+    .navbar-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #111;
+      min-width: 200px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      border-radius: 0 0 12px 12px;
+      padding: 1rem 0.5rem;
+      gap: 1rem;
+      z-index: 15;
+      animation: fadeIn 0.2s;
+    }
+    .navbar-menu.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .navbar-link {
+      color: #FFD600;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-align: left;
+    }
+    .navbar-link:hover, .navbar-link.active {
+      background: #FFD60022;
+      color: #fff700;
+    }
+    .navbar-button {
+      background: #FFD600;
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-left: 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .navbar-button:hover {
+      background: #fff700;
+      color: #000;
+    }
+    .page-header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      background: linear-gradient(180deg, rgba(124, 58, 237, 0.2) 0%, rgba(15, 15, 15, 0) 100%);
+    }
+    .page-title {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #FFD600;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: #e0e7ff;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .content-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: #FFD600;
+      letter-spacing: -0.02em;
+    }
+    .section-content {
+      color: #e0e7ff;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .tech-grid, .tokenomics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .tech-card, .tokenomics-card {
+      background: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .tech-card h3, .tokenomics-card h3 {
+      color: #a78bfa;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .tech-card p, .tokenomics-card p {
+      color: #e0e7ff;
+      line-height: 1.6;
+    }
+    .tech-card ul, .tokenomics-card ul {
+      padding-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .tech-card li, .tokenomics-card li {
+      color: #e0e7ff;
+      margin-bottom: 0.5rem;
+    }
+    .site-footer {
+      width: 100%;
+      background: linear-gradient(90deg, #2d2254 0%, #7c3aed 100%);
+      color: #fff;
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      text-align: center;
+      margin-top: 4rem;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      box-shadow: 0 -4px 32px 0 #7c3aed22;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links a {
+      color: #FFD600;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #a78bfa;
+    }
+    .footer-copy {
+      font-size: 1rem;
+      color: #e0e7ff;
+      margin-bottom: 0.5rem;
+    }
+    .footer-disclaimer {
+      font-size: 0.95rem;
+      color: #c7bfff;
+      opacity: 0.8;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .why-card {
+      background: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .why-card h3 {
+      color: #FFD600;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .why-card p {
+      color: #e0e7ff;
+      line-height: 1.6;
+    }
+    .cta-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(180deg, rgba(15, 15, 15, 0) 0%, rgba(124, 58, 237, 0.1) 100%);
+      margin-top: 3rem;
+    }
+    .cta-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: #FFD600;
+    }
+    .cta-text {
+      color: #e0e7ff;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.7;
+    }
+    .cta-btn {
+      background: #FFD600;
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      padding: 1rem 2.5rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .cta-btn:hover {
+      background: #fff700;
+    }
+    .token-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .token-detail {
+      background: #111;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .token-detail h4 {
+      color: #a78bfa;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .token-detail p {
+      color: #FFD600;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+    
+    @media screen and (max-width: 900px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      
+      .navbar-hamburger {
+        display: block;
+        margin-left: auto;
+      }
+      
+      .navbar-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(145deg, #221844, #2e1e5e);
+        padding: 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
+        z-index: 10;
+      }
+      
+      .navbar-menu.active {
+        display: flex;
+      }
+      
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .content-section {
+        padding: 2rem 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .tech-grid, .tokenomics-grid, .why-grid, .token-details {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media screen and (max-width: 600px) {
+      .navbar {
+        padding: 0.8rem 1rem;
+      }
+      
+      .page-title {
+        font-size: 2.2rem;
+      }
+      
+      .content-section {
+        padding: 1.5rem 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="logoquant.png" alt="Quant Logo" style="height:32px;width:32px;border-radius:6px;vertical-align:middle;"> Quant
+    </div>
+    <button class="navbar-hamburger" id="navbarHamburger">&#9776;</button>
+    <div class="navbar-menu" id="navbarMenu">
+      <a href="index.html" class="navbar-link">Home</a>
+      <a href="about.html" class="navbar-link active">About</a>
+      <a href="tokenomics.html" class="navbar-link">Tokenomics</a>
+      <a href="docs.html" class="navbar-link">Docs</a>
+      <a href="roadmap.html" class="navbar-link">Roadmap</a>
+      <a href="security.html" class="navbar-link">Security</a>
+      <a href="legal.html" class="navbar-link">Legal</a>
+      <button class="navbar-button">Get Started</button>
+    </div>
+  </nav>
+
+  <header class="page-header animate-on-scroll">
+    <h1 class="page-title">About QuantX (QNTX)</h1>
+    <p class="page-subtitle">Welcome to QuantX (QNTX) – A revolutionary step forward in the world of decentralized finance and blockchain technology.</p>
+  </header>
+
+  <!-- About Section -->
+  <section class="content-section animate-on-scroll">
+    <p class="section-content">
+      At QuantX, we believe in creating transparent, secure, and scalable digital assets for the future. Our mission is to build a robust ecosystem around our QNTX token, providing solutions for decentralized applications and fostering community-driven projects on the Binance Smart Chain (BSC).
+    </p>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="content-section animate-on-scroll">
+    <h2 class="section-title">Our Vision</h2>
+    <p class="section-content">
+      QuantX is designed with the future in mind. We envision a world where digital assets, powered by blockchain, can be seamlessly integrated into everyday life. With security, transparency, and innovation at our core, we aim to contribute to the global shift towards decentralized finance. Through QNTX, we aspire to offer users and developers the tools they need to create, interact with, and manage their digital assets on the Binance Smart Chain.
+    </p>
+  </section>
+
+  <!-- Technology Section -->
+  <section class="content-section animate-on-scroll">
+    <h2 class="section-title">The Technology Behind QNTX</h2>
+    <p class="section-content">
+      QuantX is a <strong>BEP-20</strong> standard token built on the <strong>Binance Smart Chain (BSC)</strong>, one of the most popular blockchain platforms for decentralized applications. The token was developed using the latest technologies to ensure a secure, efficient, and scalable platform for everyone involved.
+    </p>
+    
+    <h3 style="color: #a78bfa; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.4rem;">Key Technologies We Use</h3>
+    <div class="tech-grid">
+      <div class="tech-card animate-on-scroll delay-100">
+        <h3>Solidity</h3>
+        <p>The smart contract for QNTX was written using Solidity, a secure and efficient programming language that ensures the integrity of the token's features.</p>
+      </div>
+      <div class="tech-card animate-on-scroll delay-200">
+        <h3>Hardhat</h3>
+        <p>This development environment allows us to compile, test, and deploy the contract with ease, ensuring a seamless experience for our users.</p>
+      </div>
+      <div class="tech-card animate-on-scroll delay-300">
+        <h3>OpenZeppelin</h3>
+        <p>We rely on OpenZeppelin's secure, standard contracts to build our token, ensuring industry-leading security and functionality.</p>
+      </div>
+      <div class="tech-card animate-on-scroll delay-100">
+        <h3>Ethers.js</h3>
+        <p>For interacting with the Binance Smart Chain, we use Ethers.js to create a smooth, fast, and reliable connection between users and the blockchain.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tokenomics Section -->
+  <section class="content-section animate-on-scroll">
+    <h2 class="section-title">Tokenomics</h2>
+    <p class="section-content">
+      QNTX has a total supply of <strong>10 million tokens</strong>, designed to provide a strong foundation for long-term growth and utility in the DeFi space. With a carefully crafted supply mechanism and secure minting and burning features, we offer flexibility and transparency to our community.
+    </p>
+    
+    <h3 style="color: #a78bfa; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.4rem;">Token Details</h3>
+    <div class="token-details">
+      <div class="token-detail animate-on-scroll delay-100">
+        <h4>Token Name</h4>
+        <p>QuantX</p>
+      </div>
+      <div class="token-detail animate-on-scroll delay-100">
+        <h4>Token Symbol</h4>
+        <p>QNTX</p>
+      </div>
+      <div class="token-detail animate-on-scroll delay-200">
+        <h4>Total Supply</h4>
+        <p>10,000,000</p>
+      </div>
+      <div class="token-detail animate-on-scroll delay-200">
+        <h4>Decimals</h4>
+        <p>18</p>
+      </div>
+      <div class="token-detail animate-on-scroll delay-300">
+        <h4>Token Standard</h4>
+        <p>BEP-20</p>
+      </div>
+      <div class="token-detail animate-on-scroll delay-300">
+        <h4>Blockchain</h4>
+        <p>Binance Smart Chain</p>
+      </div>
+    </div>
+    
+    <p class="section-content" style="margin-top: 2rem;">
+      Our contract has been designed to allow minting and burning by the contract owner, ensuring that the supply remains adaptable to future requirements. Furthermore, users have the ability to burn their own tokens, helping to reduce total supply if desired.
+    </p>
+  </section>
+
+  <!-- Security Section -->
+  <section class="content-section animate-on-scroll">
+    <h2 class="section-title">Security First</h2>
+    <p class="section-content">
+      The security of our token holders and the integrity of our contract are of the utmost importance to us. QNTX is built on <strong>OpenZeppelin's</strong> audited contracts (v5.0.1), which have become the gold standard in blockchain security. These contracts are thoroughly tested to ensure that your assets are protected against common vulnerabilities.
+    </p>
+    
+    <h3 style="color: #a78bfa; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.4rem;">Key Security Features</h3>
+    <div class="tech-grid">
+      <div class="tech-card animate-on-scroll delay-100">
+        <h3>Ownable Ownership Pattern</h3>
+        <p>Only the contract owner can mint additional tokens, preventing unauthorized creation of tokens.</p>
+      </div>
+      <div class="tech-card animate-on-scroll delay-200">
+        <h3>Reentrancy Protection</h3>
+        <p>Our contract has built-in safeguards to prevent reentrancy attacks.</p>
+      </div>
+      <div class="tech-card animate-on-scroll delay-300">
+        <h3>Gas Optimization</h3>
+        <p>We've optimized the smart contract to be gas-efficient on the Binance Smart Chain.</p>
+      </div>
+      <div class="tech-card animate-on-scroll delay-100">
+        <h3>Audit-Ready</h3>
+        <p>We are committed to full transparency, and the contract is fully ready for verification on <strong>BSCScan</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="content-section animate-on-scroll">
+    <h2 class="section-title">Our Mission</h2>
+    <p class="section-content">
+      At QuantX, our mission is to drive the adoption of blockchain technology by creating practical, user-friendly solutions for the digital economy. We are committed to helping our users and developers engage with and benefit from decentralized applications.
+    </p>
+    <p class="section-content">
+      By leveraging the power of the Binance Smart Chain and the flexibility of our token, we aim to create an open, decentralized future for digital finance. QuantX is built by the community, for the community, and we are committed to transparency, security, and continuous innovation.
+    </p>
+  </section>
+
+  <!-- Why QuantX Section -->
+  <section class="content-section animate-on-scroll">
+    <h2 class="section-title">Why QuantX?</h2>
+    <div class="why-grid">
+      <div class="why-card animate-on-scroll delay-100">
+        <h3>Security and Reliability</h3>
+        <p>Built on proven technologies, QuantX ensures that your assets are secure with industry-standard protections.</p>
+      </div>
+      <div class="why-card animate-on-scroll delay-200">
+        <h3>Scalability</h3>
+        <p>Our token is designed to handle growing demands, ensuring that it remains efficient as the ecosystem expands.</p>
+      </div>
+      <div class="why-card animate-on-scroll delay-300">
+        <h3>Ownership and Control</h3>
+        <p>With features like minting and burning, we empower token holders to control the total supply, contributing to a healthy economy.</p>
+      </div>
+      <div class="why-card animate-on-scroll delay-100">
+        <h3>Community-Centric</h3>
+        <p>QuantX is committed to being a project that listens to and grows with its community, with a focus on delivering real utility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Community Section -->
+  <section class="cta-section animate-on-scroll">
+    <h2 class="cta-title">Join the QuantX Community</h2>
+    <p class="cta-text">
+      We believe that the future of finance lies in decentralization, and we invite you to join us in this journey. Whether you're a developer, investor, or simply someone interested in the possibilities of blockchain, QuantX provides the tools and platform to help you engage with the future of decentralized finance.
+    </p>
+    <p class="cta-text">
+      Stay connected, stay informed, and be a part of the QuantX revolution. Together, we can shape the future of digital finance.
+    </p>
+    <a href="#" class="cta-btn">Join Our Community</a>
+  </section>
+
+  <footer class="site-footer animate-on-scroll">
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="tokenomics.html">Tokenomics</a>
+      <a href="docs.html">Docs</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="security.html">Security</a>
+      <a href="legal.html">Legal</a>
+    </div>
+    <div class="footer-copy">&copy; 2024 Quant (QNTX). All rights reserved.</div>
+    <div class="footer-disclaimer">This website is for informational purposes only and does not constitute financial advice.</div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('navbarHamburger');
+    const menu = document.getElementById('navbarMenu');
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && e.target !== hamburger) {
+        menu.classList.remove('active');
+      }
+    });
+    
+    // Scroll animation observer
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
+      // Animate elements that are already visible when the page loads
+      animateElementsInView(animatedElements);
+      
+      // Create the IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            // Unobserve after animation
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null, // viewport
+        threshold: 0.1, // 10% of the item visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before item enters viewport
+      });
+      
+      // Observe all elements with the animate-on-scroll class
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Function to animate elements already in view on load
+      function animateElementsInView(elements) {
+        elements.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+          
+          if (rect.top <= windowHeight) {
+            element.classList.add('animated');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html> 
